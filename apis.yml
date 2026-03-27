@@ -1,17 +1,59 @@
 aid: tropic
 name: Tropic
 description: >-
-  Tropic provides API capabilities.
+  Tropic is an intelligent procurement platform that combines AI-powered spend
+  management, supplier management, and benchmark data to help organizations
+  find and capture savings opportunities. Tropic's AI agents track renewals,
+  spot shadow spend, flag compliance issues, and automate manual procurement
+  tasks with SKU-level price benchmarks from thousands of actual deals.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
+  - SaaS Management
+  - Procurement
+  - Spend Management
+  - Supplier Management
+  - Cost Optimization
+  - SaaS Procurement
+  - Benchmarking
+  - Renewals
 url: >-
   https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-03-16'
+modified: '2026-03-27'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: tropic:rest-api
+    name: Tropic API
+    description: >-
+      The Tropic public API and webhooks enable organizations to connect Tropic
+      with other software in their stack, creating a connected spend and
+      procurement ecosystem. The API supports building custom integrations for
+      tools that do not have pre-built connectors.
+    humanURL: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
+    tags:
+      - Procurement
+      - Spend Management
+      - Webhooks
+      - Integrations
+    properties:
+      - url: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
+        type: Documentation
+common:
+  - type: Website
+    url: https://www.tropicapp.io/
+  - type: Documentation
+    url: https://help.tropicapp.io/hc/en-us
+  - type: Blog
+    url: https://www.tropicapp.io/blog
+  - type: Login
+    url: https://app.tropicapp.io/portal/login
+  - type: Integrations
+    url: https://www.tropicapp.io/solutions/integrations
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/tropicapp
+  - type: Twitter
+    url: https://x.com/tropicapp
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
