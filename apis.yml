@@ -9,14 +9,14 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - SaaS Management
+  - Benchmarking
+  - Cost Optimization
   - Procurement
+  - Renewals
+  - SaaS Management
+  - SaaS Procurement
   - Spend Management
   - Supplier Management
-  - Cost Optimization
-  - SaaS Procurement
-  - Benchmarking
-  - Renewals
 url: >-
   https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/apis.yml
 created: '2026-03-16'
@@ -32,10 +32,10 @@ apis:
       tools that do not have pre-built connectors.
     humanURL: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
     tags:
+      - Integrations
       - Procurement
       - Spend Management
       - Webhooks
-      - Integrations
     properties:
       - url: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
         type: Documentation
