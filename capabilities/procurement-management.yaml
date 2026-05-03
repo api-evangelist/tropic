@@ -1,0 +1,402 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Tropic Procurement Management"
+  description: >-
+    Workflow capability for managing the full procurement lifecycle in Tropic —
+    from intake and request approval through contract execution and supplier management.
+    Used by procurement teams, finance managers, and operations leads.
+  tags:
+    - Tropic
+    - Procurement
+    - Contract Management
+    - Supplier Management
+    - Spend Management
+    - Approval Workflows
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      TROPIC_API_KEY: TROPIC_API_KEY
+
+capability:
+  consumes:
+    - import: tropic
+      location: ./shared/tropic-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: tropic-procurement-api
+      description: "Unified REST API for Tropic procurement lifecycle management."
+      resources:
+        - path: /v1/contracts
+          name: contracts
+          description: "Contract lifecycle management"
+          operations:
+            - method: GET
+              name: list-contracts
+              description: "List all contracts with optional filters"
+              call: "tropic.list-contracts"
+              with:
+                page: "rest.page"
+                per_page: "rest.per_page"
+                status: "rest.status"
+                supplier_id: "rest.supplier_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-contract
+              description: "Create a new contract record"
+              call: "tropic.create-contract"
+              with:
+                name: "rest.name"
+                supplier_id: "rest.supplier_id"
+                start_date: "rest.start_date"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/contracts/{id}
+          name: contract
+          description: "Individual contract operations"
+          operations:
+            - method: GET
+              name: get-contract
+              description: "Get a contract by ID"
+              call: "tropic.get-contract"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-contract
+              description: "Update a contract"
+              call: "tropic.update-contract"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-contract
+              description: "Delete a contract"
+              call: "tropic.delete-contract"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/suppliers
+          name: suppliers
+          description: "Supplier relationship management"
+          operations:
+            - method: GET
+              name: list-suppliers
+              description: "List all suppliers"
+              call: "tropic.list-suppliers"
+              with:
+                q: "rest.q"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-supplier
+              description: "Create a new supplier"
+              call: "tropic.create-supplier"
+              with:
+                name: "rest.name"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/suppliers/{id}
+          name: supplier
+          operations:
+            - method: GET
+              name: get-supplier
+              description: "Get a supplier by ID"
+              call: "tropic.get-supplier"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-supplier
+              description: "Update a supplier"
+              call: "tropic.update-supplier"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/requests
+          name: requests
+          description: "Procurement request management"
+          operations:
+            - method: GET
+              name: list-requests
+              description: "List procurement requests"
+              call: "tropic.list-requests"
+              with:
+                status: "rest.status"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-request
+              description: "Submit a new procurement request"
+              call: "tropic.create-request"
+              with:
+                title: "rest.title"
+                amount: "rest.amount"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/requests/{id}
+          name: request
+          operations:
+            - method: GET
+              name: get-request
+              description: "Get a request by ID"
+              call: "tropic.get-request"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/requests/{id}/approve
+          name: request-approve
+          operations:
+            - method: POST
+              name: approve-request
+              description: "Approve a pending request"
+              call: "tropic.approve-request"
+              with:
+                id: "rest.id"
+                notes: "rest.notes"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/requests/{id}/reject
+          name: request-reject
+          operations:
+            - method: POST
+              name: reject-request
+              description: "Reject a pending request"
+              call: "tropic.reject-request"
+              with:
+                id: "rest.id"
+                reason: "rest.reason"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/webhooks
+          name: webhooks
+          description: "Event webhook management"
+          operations:
+            - method: GET
+              name: list-webhooks
+              description: "List webhook subscriptions"
+              call: "tropic.list-webhooks"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-webhook
+              description: "Create a webhook subscription"
+              call: "tropic.create-webhook"
+              with:
+                url: "rest.url"
+                events: "rest.events"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/users
+          name: users
+          description: "User management"
+          operations:
+            - method: GET
+              name: list-users
+              description: "List organization users"
+              call: "tropic.list-users"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: tropic-procurement-mcp
+      transport: http
+      description: "MCP server for AI-assisted procurement management in Tropic."
+      tools:
+        - name: list-contracts
+          description: "List all contracts with optional status and supplier filters"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "tropic.list-contracts"
+          with:
+            status: "tools.status"
+            supplier_id: "tools.supplier_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-contract
+          description: "Get a specific contract by ID"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "tropic.get-contract"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-contract
+          description: "Create a new vendor contract in Tropic"
+          hints:
+            readOnly: false
+          call: "tropic.create-contract"
+          with:
+            name: "tools.name"
+            supplier_id: "tools.supplier_id"
+            start_date: "tools.start_date"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-contract
+          description: "Update contract details (status, renewal date, value)"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "tropic.update-contract"
+          with:
+            id: "tools.id"
+            status: "tools.status"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-suppliers
+          description: "List all supplier profiles"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "tropic.list-suppliers"
+          with:
+            q: "tools.q"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-supplier
+          description: "Get a specific supplier by ID"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "tropic.get-supplier"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-supplier
+          description: "Create a new supplier profile"
+          hints:
+            readOnly: false
+          call: "tropic.create-supplier"
+          with:
+            name: "tools.name"
+            website: "tools.website"
+            category: "tools.category"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-requests
+          description: "List procurement requests with optional status filter"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "tropic.list-requests"
+          with:
+            status: "tools.status"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-request
+          description: "Get a specific procurement request by ID"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "tropic.get-request"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-request
+          description: "Submit a new procurement request"
+          hints:
+            readOnly: false
+          call: "tropic.create-request"
+          with:
+            title: "tools.title"
+            amount: "tools.amount"
+            supplier_id: "tools.supplier_id"
+            category: "tools.category"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: approve-request
+          description: "Approve a pending procurement request"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "tropic.approve-request"
+          with:
+            id: "tools.id"
+            notes: "tools.notes"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: reject-request
+          description: "Reject a pending procurement request with a reason"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "tropic.reject-request"
+          with:
+            id: "tools.id"
+            reason: "tools.reason"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-webhooks
+          description: "List configured webhook subscriptions"
+          hints:
+            readOnly: true
+          call: "tropic.list-webhooks"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-webhook
+          description: "Create a new webhook subscription for procurement events"
+          hints:
+            readOnly: false
+          call: "tropic.create-webhook"
+          with:
+            url: "tools.url"
+            events: "tools.events"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-users
+          description: "List organization users in Tropic"
+          hints:
+            readOnly: true
+          call: "tropic.list-users"
+          outputParameters:
+            - type: object
+              mapping: "$."

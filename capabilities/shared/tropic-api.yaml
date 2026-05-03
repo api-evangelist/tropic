@@ -1,0 +1,476 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Tropic API"
+  description: >-
+    The Tropic public API for managing contracts, suppliers, procurement requests,
+    webhooks, and users in an intelligent procurement platform.
+  tags:
+    - Procurement
+    - Contract Management
+    - Supplier Management
+    - Spend Management
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      TROPIC_API_KEY: TROPIC_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: tropic
+      baseUri: https://api.tropicapp.io/v1
+      description: "Tropic procurement and spend management API"
+      authentication:
+        type: bearer
+        token: "{{TROPIC_API_KEY}}"
+      resources:
+        - name: contracts
+          path: /contracts
+          description: "Contract lifecycle management"
+          operations:
+            - name: list-contracts
+              method: GET
+              description: "List all contracts"
+              inputParameters:
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page number"
+                - name: per_page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Results per page"
+                - name: status
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by status"
+                - name: supplier_id
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by supplier ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-contract
+              method: POST
+              description: "Create a new contract"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  supplier_id: "{{tools.supplier_id}}"
+                  start_date: "{{tools.start_date}}"
+                  end_date: "{{tools.end_date}}"
+                  total_value: "{{tools.total_value}}"
+
+        - name: contract
+          path: /contracts/{id}
+          description: "Individual contract operations"
+          operations:
+            - name: get-contract
+              method: GET
+              description: "Get contract by ID"
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Contract ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-contract
+              method: PUT
+              description: "Update an existing contract"
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Contract ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  status: "{{tools.status}}"
+                  renewal_date: "{{tools.renewal_date}}"
+                  total_value: "{{tools.total_value}}"
+            - name: delete-contract
+              method: DELETE
+              description: "Delete a contract"
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: suppliers
+          path: /suppliers
+          description: "Supplier profile management"
+          operations:
+            - name: list-suppliers
+              method: GET
+              description: "List all suppliers"
+              inputParameters:
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                - name: per_page
+                  in: query
+                  type: integer
+                  required: false
+                - name: q
+                  in: query
+                  type: string
+                  required: false
+                  description: "Search query"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-supplier
+              method: POST
+              description: "Create a new supplier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  website: "{{tools.website}}"
+                  category: "{{tools.category}}"
+
+        - name: supplier
+          path: /suppliers/{id}
+          description: "Individual supplier operations"
+          operations:
+            - name: get-supplier
+              method: GET
+              description: "Get supplier by ID"
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-supplier
+              method: PUT
+              description: "Update a supplier"
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  status: "{{tools.status}}"
+
+        - name: requests
+          path: /requests
+          description: "Procurement request management"
+          operations:
+            - name: list-requests
+              method: GET
+              description: "List procurement requests"
+              inputParameters:
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                - name: per_page
+                  in: query
+                  type: integer
+                  required: false
+                - name: status
+                  in: query
+                  type: string
+                  required: false
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-request
+              method: POST
+              description: "Create a procurement request"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  title: "{{tools.title}}"
+                  amount: "{{tools.amount}}"
+                  supplier_id: "{{tools.supplier_id}}"
+                  category: "{{tools.category}}"
+
+        - name: request
+          path: /requests/{id}
+          description: "Individual request operations"
+          operations:
+            - name: get-request
+              method: GET
+              description: "Get request by ID"
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: request-approve
+          path: /requests/{id}/approve
+          description: "Approve a procurement request"
+          operations:
+            - name: approve-request
+              method: POST
+              description: "Approve a pending request"
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  notes: "{{tools.notes}}"
+
+        - name: request-reject
+          path: /requests/{id}/reject
+          description: "Reject a procurement request"
+          operations:
+            - name: reject-request
+              method: POST
+              description: "Reject a pending request"
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  reason: "{{tools.reason}}"
+
+        - name: webhooks
+          path: /webhooks
+          description: "Webhook subscription management"
+          operations:
+            - name: list-webhooks
+              method: GET
+              description: "List all webhooks"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-webhook
+              method: POST
+              description: "Create a webhook subscription"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  url: "{{tools.url}}"
+                  events: "{{tools.events}}"
+
+        - name: users
+          path: /users
+          description: "User management"
+          operations:
+            - name: list-users
+              method: GET
+              description: "List organization users"
+              inputParameters:
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                - name: per_page
+                  in: query
+                  type: integer
+                  required: false
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: tropic-rest
+      resources:
+        - path: /v1/contracts
+          name: contracts
+          description: "Contract management"
+          operations:
+            - method: GET
+              name: list-contracts
+              description: "List contracts"
+              call: "tropic.list-contracts"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-contract
+              description: "Create contract"
+              call: "tropic.create-contract"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/contracts/{id}
+          name: contract
+          operations:
+            - method: GET
+              name: get-contract
+              description: "Get contract"
+              call: "tropic.get-contract"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-contract
+              description: "Update contract"
+              call: "tropic.update-contract"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/suppliers
+          name: suppliers
+          operations:
+            - method: GET
+              name: list-suppliers
+              description: "List suppliers"
+              call: "tropic.list-suppliers"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/requests
+          name: requests
+          operations:
+            - method: GET
+              name: list-requests
+              description: "List requests"
+              call: "tropic.list-requests"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: tropic-mcp
+      transport: http
+      tools:
+        - name: list-contracts
+          description: "List all contracts"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "tropic.list-contracts"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-contract
+          description: "Get a contract by ID"
+          hints:
+            readOnly: true
+          call: "tropic.get-contract"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-suppliers
+          description: "List all suppliers"
+          hints:
+            readOnly: true
+          call: "tropic.list-suppliers"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-requests
+          description: "List procurement requests"
+          hints:
+            readOnly: true
+          call: "tropic.list-requests"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: approve-request
+          description: "Approve a procurement request"
+          hints:
+            readOnly: false
+          call: "tropic.approve-request"
+          with:
+            id: "tools.id"
+            notes: "tools.notes"
+          outputParameters:
+            - type: object
+              mapping: "$."

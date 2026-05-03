@@ -1,0 +1,38 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.tropicapp.io/v1/requests",
+    "headers": {
+      "Authorization": "Bearer YOUR_API_KEY",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "title": "Adobe Creative Cloud - New Licenses",
+      "description": "Request for 10 additional Adobe Creative Cloud licenses for the design team",
+      "supplier_id": "sup_adobe001",
+      "amount": 6600,
+      "currency": "USD",
+      "category": "Software"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "id": "req_01HDEF789",
+      "title": "Adobe Creative Cloud - New Licenses",
+      "description": "Request for 10 additional Adobe Creative Cloud licenses for the design team",
+      "requester_id": "usr_mary003",
+      "supplier_id": "sup_adobe001",
+      "status": "pending_approval",
+      "amount": 6600,
+      "currency": "USD",
+      "category": "Software",
+      "approver_id": null,
+      "approved_at": null,
+      "rejected_at": null,
+      "rejection_reason": null,
+      "created_at": "2026-05-03T12:00:00Z",
+      "updated_at": "2026-05-03T12:00:00Z"
+    }
+  }
+}

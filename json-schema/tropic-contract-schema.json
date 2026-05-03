@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.tropicapp.io/schemas/contract",
+  "title": "Contract",
+  "description": "A vendor contract managed in the Tropic procurement platform",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique contract identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Contract display name",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "supplier_id": {
+      "type": "string",
+      "description": "ID of the associated supplier"
+    },
+    "supplier_name": {
+      "type": "string",
+      "description": "Name of the associated supplier"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "expired", "pending", "cancelled"],
+      "description": "Current contract status"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Contract effective start date (ISO 8601)"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Contract end date (ISO 8601)"
+    },
+    "renewal_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the contract is up for renewal"
+    },
+    "total_value": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Total contract value in the specified currency"
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD",
+      "description": "ISO 4217 currency code"
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "User ID of the contract owner"
+    },
+    "documents": {
+      "type": "array",
+      "description": "Attached contract documents",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "url": { "type": "string", "format": "uri" }
+        },
+        "required": ["id", "name"]
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the contract was created"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the contract was last updated"
+    }
+  },
+  "required": ["id", "name", "status", "start_date"],
+  "additionalProperties": false
+}

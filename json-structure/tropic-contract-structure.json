@@ -1,0 +1,29 @@
+{
+  "name": "Contract",
+  "description": "A vendor contract in the Tropic procurement platform",
+  "fields": [
+    { "name": "id", "type": "string", "description": "Unique identifier", "required": true },
+    { "name": "name", "type": "string", "description": "Contract name", "required": true },
+    { "name": "supplier_id", "type": "string", "description": "Associated supplier ID", "required": false },
+    { "name": "supplier_name", "type": "string", "description": "Supplier name (denormalized)", "required": false },
+    { "name": "status", "type": "enum[active,expired,pending,cancelled]", "description": "Contract lifecycle status", "required": true },
+    { "name": "start_date", "type": "date", "description": "Contract start date", "required": true },
+    { "name": "end_date", "type": "date", "description": "Contract end date", "required": false },
+    { "name": "renewal_date", "type": "date", "description": "Renewal tracking date", "required": false },
+    { "name": "total_value", "type": "number", "description": "Total contract value", "required": false },
+    { "name": "currency", "type": "string", "description": "ISO 4217 currency code", "required": false, "default": "USD" },
+    { "name": "owner_id", "type": "string", "description": "Owning user ID", "required": false },
+    { "name": "documents", "type": "array[Document]", "description": "Attached documents", "required": false },
+    { "name": "created_at", "type": "datetime", "description": "Creation timestamp", "required": false },
+    { "name": "updated_at", "type": "datetime", "description": "Last updated timestamp", "required": false }
+  ],
+  "nested": {
+    "Document": {
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "name", "type": "string", "required": true },
+        { "name": "url", "type": "uri", "required": false }
+      ]
+    }
+  }
+}

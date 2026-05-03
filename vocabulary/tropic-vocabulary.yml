@@ -1,0 +1,117 @@
+aid: tropic-vocabulary
+name: Tropic Vocabulary
+description: >-
+  Domain vocabulary for the Tropic intelligent procurement platform covering
+  procurement lifecycle, supplier management, contract administration, and
+  spend optimization terminology.
+created: '2026-05-03'
+modified: '2026-05-03'
+tags:
+  - Procurement
+  - Contract Management
+  - Spend Management
+  - Supplier Management
+
+terms:
+  - term: Contract
+    definition: >-
+      A legally binding agreement between the organization and a supplier
+      that defines terms, pricing, and duration of a service or purchase.
+    tags:
+      - Contracts
+      - Legal
+
+  - term: Supplier
+    definition: >-
+      A vendor or service provider that the organization has or may have a
+      commercial relationship with. Also referred to as a vendor.
+    tags:
+      - Suppliers
+      - Vendor Management
+
+  - term: Procurement Request
+    definition: >-
+      A formal intake submission requesting approval to purchase a product
+      or service from a supplier. Routes through the approval workflow.
+    tags:
+      - Requests
+      - Approvals
+
+  - term: Renewal Date
+    definition: >-
+      The date by which a contract must be reviewed and either renewed or
+      cancelled. Used for tracking renewals proactively.
+    tags:
+      - Contracts
+      - Renewals
+
+  - term: Spend
+    definition: >-
+      Total monetary value committed to or spent with a supplier or across
+      categories. Used for benchmarking and cost optimization.
+    tags:
+      - Spend Management
+      - Finance
+
+  - term: Webhook
+    definition: >-
+      An HTTP callback triggered when a specific event occurs in Tropic,
+      enabling real-time integrations with external systems.
+    tags:
+      - Webhooks
+      - Integrations
+
+  - term: Benchmark
+    definition: >-
+      Market pricing data derived from aggregated deal data used to evaluate
+      whether a contract price is competitive.
+    tags:
+      - Benchmarking
+      - Cost Optimization
+
+  - term: Shadow Spend
+    definition: >-
+      Unauthorized or undisclosed spend on software or services outside of
+      the official procurement process.
+    tags:
+      - Spend Management
+      - Compliance
+
+  - term: SaaS Management
+    definition: >-
+      The practice of tracking, managing, and optimizing software-as-a-service
+      subscriptions across an organization.
+    tags:
+      - SaaS Management
+
+  - term: Intake
+    definition: >-
+      The process by which a purchase or renewal request enters the
+      procurement workflow for review and approval.
+    tags:
+      - Requests
+      - Workflow
+
+  - term: Approval Workflow
+    definition: >-
+      A configurable sequence of review and sign-off steps that a procurement
+      request must pass through before being authorized.
+    tags:
+      - Approvals
+      - Workflow
+
+  - term: Contract Lifecycle Management
+    definition: >-
+      The end-to-end process of creating, negotiating, executing, and
+      renewing contracts with suppliers.
+    abbreviation: CLM
+    tags:
+      - Contracts
+
+  - term: Risk Rating
+    definition: >-
+      An assessment of a supplier's reliability, financial stability, and
+      compliance posture. Values are low, medium, or high.
+    tags:
+      - Suppliers
+      - Risk Management

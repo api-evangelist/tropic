@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.tropicapp.io/schemas/supplier",
+  "title": "Supplier",
+  "description": "A vendor/supplier profile in the Tropic procurement platform",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique supplier identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Supplier company name",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "website": {
+      "type": "string",
+      "format": "uri",
+      "description": "Supplier website URL"
+    },
+    "category": {
+      "type": "string",
+      "description": "Supplier category (e.g., Software, Services, Hardware)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "inactive", "prospect"],
+      "description": "Supplier relationship status"
+    },
+    "contacts": {
+      "type": "array",
+      "description": "Supplier contact persons",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "role": { "type": "string" }
+        }
+      }
+    },
+    "spend": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Total annual spend with this supplier in USD"
+    },
+    "risk_rating": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "Assessed risk level for this supplier"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["id", "name"],
+  "additionalProperties": false
+}

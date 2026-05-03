@@ -1,0 +1,25 @@
+{
+  "name": "Supplier",
+  "description": "A vendor/supplier profile in the Tropic platform",
+  "fields": [
+    { "name": "id", "type": "string", "description": "Unique identifier", "required": true },
+    { "name": "name", "type": "string", "description": "Company name", "required": true },
+    { "name": "website", "type": "uri", "description": "Supplier website", "required": false },
+    { "name": "category", "type": "string", "description": "Spend category", "required": false },
+    { "name": "status", "type": "enum[active,inactive,prospect]", "description": "Relationship status", "required": false },
+    { "name": "contacts", "type": "array[Contact]", "description": "Supplier contacts", "required": false },
+    { "name": "spend", "type": "number", "description": "Annual spend in USD", "required": false },
+    { "name": "risk_rating", "type": "enum[low,medium,high]", "description": "Supplier risk level", "required": false },
+    { "name": "created_at", "type": "datetime", "required": false },
+    { "name": "updated_at", "type": "datetime", "required": false }
+  ],
+  "nested": {
+    "Contact": {
+      "fields": [
+        { "name": "name", "type": "string", "required": false },
+        { "name": "email", "type": "email", "required": false },
+        { "name": "role", "type": "string", "required": false }
+      ]
+    }
+  }
+}

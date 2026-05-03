@@ -1,0 +1,63 @@
+{
+  "@context": {
+    "@vocab": "https://schema.tropicapp.io/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Contract": "schema:Contract",
+    "Supplier": "schema:Organization",
+    "ProcurementRequest": "schema:Order",
+    "Webhook": "schema:WebhookEvent",
+
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "status": "schema:status",
+    "created_at": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updated_at": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "start_date": {
+      "@id": "schema:startDate",
+      "@type": "xsd:date"
+    },
+    "end_date": {
+      "@id": "schema:endDate",
+      "@type": "xsd:date"
+    },
+    "renewal_date": {
+      "@id": "schema:expires",
+      "@type": "xsd:date"
+    },
+    "total_value": "schema:price",
+    "currency": "schema:priceCurrency",
+    "website": "schema:url",
+    "email": "schema:email",
+    "supplier_id": {
+      "@id": "schema:seller",
+      "@type": "@id"
+    },
+    "owner_id": {
+      "@id": "schema:agent",
+      "@type": "@id"
+    },
+    "requester_id": {
+      "@id": "schema:customer",
+      "@type": "@id"
+    },
+    "amount": "schema:price",
+    "category": "schema:category",
+    "risk_rating": "riskLevel",
+    "spend": "annualSpend",
+    "contacts": "schema:contactPoint",
+    "documents": "schema:subjectOf",
+    "events": "schema:eventType",
+    "url": "schema:url",
+    "active": "schema:isAccessibleForFree",
+    "role": "schema:roleName"
+  }
+}
