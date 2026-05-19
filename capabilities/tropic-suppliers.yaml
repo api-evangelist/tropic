@@ -1,0 +1,206 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tropic API — Suppliers
+  description: 'Tropic API — Suppliers. 4 operations. Lead operation: List Suppliers. Self-contained Naftiko capability covering
+    one Tropic business surface.'
+  tags:
+  - Tropic
+  - Suppliers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TROPIC_API_KEY: TROPIC_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tropic-suppliers
+    baseUri: https://api.tropicapp.io/v1
+    description: Tropic API — Suppliers business capability. Self-contained, no shared references.
+    resources:
+    - name: suppliers
+      path: /suppliers
+      operations:
+      - name: listsuppliers
+        method: GET
+        description: List Suppliers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+        - name: per_page
+          in: query
+          type: integer
+        - name: q
+          in: query
+          type: string
+          description: Search query to filter suppliers by name
+      - name: createsupplier
+        method: POST
+        description: Create Supplier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: suppliers-id
+      path: /suppliers/{id}
+      operations:
+      - name: getsupplier
+        method: GET
+        description: Get Supplier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: updatesupplier
+        method: PUT
+        description: Update Supplier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TROPIC_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: tropic-suppliers-rest
+    port: 8080
+    description: REST adapter for Tropic API — Suppliers. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/suppliers
+      name: suppliers
+      description: REST surface for suppliers.
+      operations:
+      - method: GET
+        name: listsuppliers
+        description: List Suppliers
+        call: tropic-suppliers.listsuppliers
+        with:
+          page: rest.page
+          per_page: rest.per_page
+          q: rest.q
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createsupplier
+        description: Create Supplier
+        call: tropic-suppliers.createsupplier
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/suppliers/{id}
+      name: suppliers-id
+      description: REST surface for suppliers-id.
+      operations:
+      - method: GET
+        name: getsupplier
+        description: Get Supplier
+        call: tropic-suppliers.getsupplier
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatesupplier
+        description: Update Supplier
+        call: tropic-suppliers.updatesupplier
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tropic-suppliers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tropic API — Suppliers. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-suppliers
+      description: List Suppliers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tropic-suppliers.listsuppliers
+      with:
+        page: tools.page
+        per_page: tools.per_page
+        q: tools.q
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-supplier
+      description: Create Supplier
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: tropic-suppliers.createsupplier
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-supplier
+      description: Get Supplier
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tropic-suppliers.getsupplier
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-supplier
+      description: Update Supplier
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: tropic-suppliers.updatesupplier
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
