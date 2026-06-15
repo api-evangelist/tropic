@@ -1,55 +1,12 @@
-# Tropic
+# Tropic (tropic)
 
 Tropic is an intelligent procurement platform that combines AI-powered spend management, supplier management, and benchmark data to help organizations find and capture savings opportunities. Tropic's AI agents track renewals, spot shadow spend, flag compliance issues, and automate manual procurement tasks with SKU-level price benchmarks from thousands of actual deals.
 
-**URL:** [apis.yml](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/apis.yml)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/apis.yml)
 
-## APIs
+## Scope
 
-### Tropic API
-
-The Tropic public REST API enables organizations to connect Tropic with other software in their stack, managing contracts, suppliers, procurement requests, webhooks, and users programmatically.
-
-- **Base URL:** `https://api.tropicapp.io/v1`
-- **Authentication:** Bearer token (API key from Tropic settings)
-- **Documentation:** [API and Webhooks](https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks)
-
-**Key Endpoints:**
-- `GET/POST /contracts` — List and create contracts
-- `GET/PUT/DELETE /contracts/{id}` — Manage individual contracts
-- `GET/POST /suppliers` — List and create supplier profiles
-- `GET/PUT /suppliers/{id}` — Manage individual suppliers
-- `GET/POST /requests` — List and submit procurement requests
-- `POST /requests/{id}/approve` — Approve a request
-- `POST /requests/{id}/reject` — Reject a request
-- `GET/POST /webhooks` — Manage webhook subscriptions
-- `GET /users` — List organization users
-
-## Artifacts
-
-| Type | File |
-|---|---|
-| OpenAPI Spec | [openapi/tropic-openapi.yml](openapi/tropic-openapi.yml) |
-| Spectral Rules | [rules/tropic-rules.yml](rules/tropic-rules.yml) |
-| Naftiko Capabilities | [capabilities/procurement-management.yaml](capabilities/procurement-management.yaml) |
-| Shared Capability | [capabilities/shared/tropic-api.yaml](capabilities/shared/tropic-api.yaml) |
-| Contract JSON Schema | [json-schema/tropic-contract-schema.json](json-schema/tropic-contract-schema.json) |
-| Supplier JSON Schema | [json-schema/tropic-supplier-schema.json](json-schema/tropic-supplier-schema.json) |
-| Contract Structure | [json-structure/tropic-contract-structure.json](json-structure/tropic-contract-structure.json) |
-| Supplier Structure | [json-structure/tropic-supplier-structure.json](json-structure/tropic-supplier-structure.json) |
-| JSON-LD Context | [json-ld/tropic-context.jsonld](json-ld/tropic-context.jsonld) |
-| Examples | [examples/](examples/) |
-| Vocabulary | [vocabulary/tropic-vocabulary.yml](vocabulary/tropic-vocabulary.yml) |
-
-## Capabilities
-
-### Procurement Management (`capabilities/procurement-management.yaml`)
-
-Workflow capability for managing the full procurement lifecycle — from intake and request approval through contract execution and supplier management. Used by procurement teams, finance managers, and operations leads.
-
-- **REST port:** 8080
-- **MCP port:** 9090
-- **Tools:** 14 tools covering contracts, suppliers, requests, approvals, and webhooks
+- **Type:** Index
 
 ## Tags
 
@@ -59,15 +16,57 @@ Workflow capability for managing the full procurement lifecycle — from intake 
 - Procurement
 - Renewals
 - SaaS Management
+- SaaS Procurement
 - Spend Management
 - Supplier Management
 
 ## Timestamps
 
 - **Created:** 2026-03-16
-- **Modified:** 2026-05-03
+- **Modified:** 2026-05-19
+
+## APIs
+
+### Tropic API
+
+The Tropic public REST API enables organizations to connect Tropic with other software in their stack. It supports managing contracts, suppliers, procurement requests, webhook subscriptions, and users programmatically. Authentication uses API keys via Bearer tokens issued from the Tropic settings panel.
+
+- **Human URL:** [https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks](https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks)
+- **Base URL:** `https://api.tropicapp.io/v1`
+
+#### Tags
+
+- Contract Management
+- Integrations
+- Procurement
+- Spend Management
+- Supplier Management
+- Webhooks
+
+#### Properties
+
+- [Documentation](https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/openapi/tropic-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/rules/tropic-rules.yml)
+- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-contract-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-supplier-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [J S O N L D Context](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-ld/tropic-context.jsonld)
+- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/vocabulary/tropic-vocabulary.yml)
+- [Postman Collection](collections/tropic.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/tropic.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+## Common Properties
+
+- [Website](https://www.tropicapp.io/)
+- [Documentation](https://help.tropicapp.io/hc/en-us)
+- [Blog](https://www.tropicapp.io/blog)
+- [Login](https://app.tropicapp.io/portal/login)
+- [Integrations](https://www.tropicapp.io/solutions/integrations)
+- [Pricing](https://www.tropicapp.io/pricing)
+- [LinkedIn](https://www.linkedin.com/company/tropicapp)
+- [Twitter](https://x.com/tropicapp)
 
 ## Maintainers
 
-**FN:** Kin Lane  
+**FN:** Kin Lane
 **Email:** kin@apievangelist.com
