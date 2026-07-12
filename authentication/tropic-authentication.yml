@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tropic-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  description: API key issued from the Tropic settings panel
+  sources:
+  - openapi/tropic-openapi.yml

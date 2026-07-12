@@ -55,6 +55,12 @@ apis:
       - url: https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/vocabulary/tropic-vocabulary.yml
         type: Vocabulary
 common:
+  - type: TrustCenter
+    url: security/tropic-trust-center.yml
+  - type: DomainSecurity
+    url: security/tropic-domain-security.yml
+  - type: Authentication
+    url: authentication/tropic-authentication.yml
   - type: Website
     url: https://www.tropicapp.io/
   - type: Documentation
