@@ -1,0 +1,257 @@
+openapi: 3.0.3
+info:
+  title: Tropic Contracts Suppliers API
+  description: The Tropic public API enables organizations to connect Tropic with other software in their stack, creating a connected spend and procurement ecosystem. The API supports building custom integrations for tools that do not have pre-built connectors, including contract management, supplier management, procurement requests, and webhook configuration.
+  version: 1.0.0
+  contact:
+    name: Tropic Support
+    url: https://help.tropicapp.io
+  termsOfService: https://www.tropicapp.io/terms
+servers:
+- url: https://api.tropicapp.io/v1
+  description: Tropic Production API
+security:
+- BearerAuth: []
+tags:
+- name: Suppliers
+  description: Manage supplier profiles and relationships
+paths:
+  /suppliers:
+    get:
+      summary: List Suppliers
+      description: Returns a paginated list of all suppliers.
+      operationId: listSuppliers
+      tags:
+      - Suppliers
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          default: 25
+      - name: q
+        in: query
+        description: Search query to filter suppliers by name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Supplier'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create Supplier
+      description: Creates a new supplier profile.
+      operationId: createSupplier
+      tags:
+      - Suppliers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupplierCreate'
+      responses:
+        '201':
+          description: Supplier created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /suppliers/{id}:
+    get:
+      summary: Get Supplier
+      description: Returns a single supplier by ID.
+      operationId: getSupplier
+      tags:
+      - Suppliers
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update Supplier
+      description: Updates an existing supplier profile.
+      operationId: updateSupplier
+      tags:
+      - Suppliers
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupplierUpdate'
+      responses:
+        '200':
+          description: Supplier updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Supplier:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique supplier identifier
+        name:
+          type: string
+          description: Supplier company name
+        website:
+          type: string
+          format: uri
+        category:
+          type: string
+          description: Supplier category (e.g., Software, Services)
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          - prospect
+        contacts:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              email:
+                type: string
+                format: email
+              role:
+                type: string
+        spend:
+          type: number
+          description: Total annual spend with this supplier in USD
+        risk_rating:
+          type: string
+          enum:
+          - low
+          - medium
+          - high
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    SupplierUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        website:
+          type: string
+          format: uri
+        category:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          - prospect
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+        page:
+          type: integer
+        per_page:
+          type: integer
+        total_pages:
+          type: integer
+    SupplierCreate:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        website:
+          type: string
+          format: uri
+        category:
+          type: string
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              details:
+                type: object
+    Unauthorized:
+      description: Unauthorized - invalid or missing API key
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key issued from the Tropic settings panel

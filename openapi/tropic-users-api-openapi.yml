@@ -1,0 +1,135 @@
+openapi: 3.0.3
+info:
+  title: Tropic Contracts Users API
+  description: The Tropic public API enables organizations to connect Tropic with other software in their stack, creating a connected spend and procurement ecosystem. The API supports building custom integrations for tools that do not have pre-built connectors, including contract management, supplier management, procurement requests, and webhook configuration.
+  version: 1.0.0
+  contact:
+    name: Tropic Support
+    url: https://help.tropicapp.io
+  termsOfService: https://www.tropicapp.io/terms
+servers:
+- url: https://api.tropicapp.io/v1
+  description: Tropic Production API
+security:
+- BearerAuth: []
+tags:
+- name: Users
+  description: Manage users and access
+paths:
+  /users:
+    get:
+      summary: List Users
+      description: Returns a list of users in the organization.
+      operationId: listUsers
+      tags:
+      - Users
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          default: 25
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /users/{id}:
+    get:
+      summary: Get User
+      description: Returns a single user by ID.
+      operationId: getUser
+      tags:
+      - Users
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or missing API key
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+  schemas:
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+        page:
+          type: integer
+        per_page:
+          type: integer
+        total_pages:
+          type: integer
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+          enum:
+          - admin
+          - manager
+          - user
+          - viewer
+        active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key issued from the Tropic settings panel

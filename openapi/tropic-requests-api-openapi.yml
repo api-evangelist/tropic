@@ -1,0 +1,292 @@
+openapi: 3.0.3
+info:
+  title: Tropic Contracts Requests API
+  description: The Tropic public API enables organizations to connect Tropic with other software in their stack, creating a connected spend and procurement ecosystem. The API supports building custom integrations for tools that do not have pre-built connectors, including contract management, supplier management, procurement requests, and webhook configuration.
+  version: 1.0.0
+  contact:
+    name: Tropic Support
+    url: https://help.tropicapp.io
+  termsOfService: https://www.tropicapp.io/terms
+servers:
+- url: https://api.tropicapp.io/v1
+  description: Tropic Production API
+security:
+- BearerAuth: []
+tags:
+- name: Requests
+  description: Manage procurement requests and approvals
+paths:
+  /requests:
+    get:
+      summary: List Requests
+      description: Returns a paginated list of procurement requests.
+      operationId: listRequests
+      tags:
+      - Requests
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          default: 25
+      - name: status
+        in: query
+        description: Filter by request status
+        schema:
+          type: string
+          enum:
+          - draft
+          - pending_approval
+          - approved
+          - rejected
+          - cancelled
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProcurementRequest'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create Request
+      description: Creates a new procurement request.
+      operationId: createRequest
+      tags:
+      - Requests
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcurementRequestCreate'
+      responses:
+        '201':
+          description: Request created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcurementRequest'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /requests/{id}:
+    get:
+      summary: Get Request
+      description: Returns a single procurement request by ID.
+      operationId: getRequest
+      tags:
+      - Requests
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcurementRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /requests/{id}/approve:
+    post:
+      summary: Approve Request
+      description: Approves a pending procurement request.
+      operationId: approveRequest
+      tags:
+      - Requests
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                notes:
+                  type: string
+                  description: Approval notes
+      responses:
+        '200':
+          description: Request approved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcurementRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /requests/{id}/reject:
+    post:
+      summary: Reject Request
+      description: Rejects a pending procurement request.
+      operationId: rejectRequest
+      tags:
+      - Requests
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: Rejection reason
+      responses:
+        '200':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcurementRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    ProcurementRequestCreate:
+      type: object
+      required:
+      - title
+      - amount
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        supplier_id:
+          type: string
+        amount:
+          type: number
+        currency:
+          type: string
+          default: USD
+        category:
+          type: string
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+        page:
+          type: integer
+        per_page:
+          type: integer
+        total_pages:
+          type: integer
+    ProcurementRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique request identifier
+        title:
+          type: string
+          description: Request title
+        description:
+          type: string
+        requester_id:
+          type: string
+          description: User ID of requester
+        supplier_id:
+          type: string
+        status:
+          type: string
+          enum:
+          - draft
+          - pending_approval
+          - approved
+          - rejected
+          - cancelled
+        amount:
+          type: number
+          description: Requested amount in USD
+        currency:
+          type: string
+          default: USD
+        category:
+          type: string
+          description: Spend category
+        approver_id:
+          type: string
+        approved_at:
+          type: string
+          format: date-time
+        rejected_at:
+          type: string
+          format: date-time
+        rejection_reason:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              details:
+                type: object
+    Unauthorized:
+      description: Unauthorized - invalid or missing API key
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key issued from the Tropic settings panel

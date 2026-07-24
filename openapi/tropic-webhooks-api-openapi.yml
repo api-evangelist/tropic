@@ -1,0 +1,164 @@
+openapi: 3.0.3
+info:
+  title: Tropic Contracts Webhooks API
+  description: The Tropic public API enables organizations to connect Tropic with other software in their stack, creating a connected spend and procurement ecosystem. The API supports building custom integrations for tools that do not have pre-built connectors, including contract management, supplier management, procurement requests, and webhook configuration.
+  version: 1.0.0
+  contact:
+    name: Tropic Support
+    url: https://help.tropicapp.io
+  termsOfService: https://www.tropicapp.io/terms
+servers:
+- url: https://api.tropicapp.io/v1
+  description: Tropic Production API
+security:
+- BearerAuth: []
+tags:
+- name: Webhooks
+  description: Configure and manage webhook subscriptions
+paths:
+  /webhooks:
+    get:
+      summary: List Webhooks
+      description: Returns all configured webhook subscriptions.
+      operationId: listWebhooks
+      tags:
+      - Webhooks
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Webhook'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create Webhook
+      description: Creates a new webhook subscription.
+      operationId: createWebhook
+      tags:
+      - Webhooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookCreate'
+      responses:
+        '201':
+          description: Webhook created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /webhooks/{id}:
+    delete:
+      summary: Delete Webhook
+      description: Deletes a webhook subscription.
+      operationId: deleteWebhook
+      tags:
+      - Webhooks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Webhook deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              details:
+                type: object
+    Unauthorized:
+      description: Unauthorized - invalid or missing API key
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+  schemas:
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+          format: uri
+          description: Webhook endpoint URL
+        events:
+          type: array
+          items:
+            type: string
+            enum:
+            - contract.created
+            - contract.updated
+            - contract.approved
+            - contract.expired
+            - request.created
+            - request.approved
+            - request.rejected
+            - supplier.created
+            - supplier.updated
+        active:
+          type: boolean
+          default: true
+        secret:
+          type: string
+          description: HMAC signing secret for payload verification
+        created_at:
+          type: string
+          format: date-time
+    WebhookCreate:
+      type: object
+      required:
+      - url
+      - events
+      properties:
+        url:
+          type: string
+          format: uri
+        events:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key issued from the Tropic settings panel
