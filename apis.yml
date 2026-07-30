@@ -6,7 +6,20 @@ description: >-
   shadow spend, flag compliance issues, and automate manual procurement tasks with SKU-level price benchmarks from
   thousands of actual deals.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tropic.png
 tags:
   - Benchmarking
   - Contract Management
@@ -22,39 +35,144 @@ created: '2026-03-16'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: tropic:rest-api
-    name: Tropic API
-    description: >-
-      The Tropic public REST API enables organizations to connect Tropic with other software in their stack. It supports
-      managing contracts, suppliers, procurement requests, webhook subscriptions, and users programmatically.
-      Authentication uses API keys via Bearer tokens issued from the Tropic settings panel.
-    humanURL: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
-    baseURL: https://api.tropicapp.io/v1
-    tags:
-      - Contract Management
-      - Integrations
-      - Procurement
-      - Spend Management
-      - Supplier Management
-      - Webhooks
-    properties:
-      - url: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
-        type: Documentation
-      - url: https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/openapi/tropic-openapi.yml
-        type: OpenAPI
-      - url: https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/rules/tropic-rules.yml
-        type: SpectralRules
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-contract-schema.json
-        type: JSONSchema
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-supplier-schema.json
-        type: JSONSchema
-      - url: https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-ld/tropic-context.jsonld
-        type: JSONLDContext
-      - url: https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/vocabulary/tropic-vocabulary.yml
-        type: Vocabulary
+- aid: tropic:tropic-contracts-api
+  name: Tropic Contracts API
+  description: Manage vendor contracts and contract lifecycle
+  humanURL: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
+  baseURL: https://api.tropicapp.io/v1
+  tags:
+  - Contracts
+  properties:
+  - type: OpenAPI
+    url: openapi/tropic-contracts-api-openapi.yml
+  - type: Documentation
+    url: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/rules/tropic-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-contract-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-supplier-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-ld/tropic-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/vocabulary/tropic-vocabulary.yml
+- aid: tropic:tropic-requests-api
+  name: Tropic Requests API
+  description: Manage procurement requests and approvals
+  humanURL: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
+  baseURL: https://api.tropicapp.io/v1
+  tags:
+  - Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/tropic-requests-api-openapi.yml
+  - type: Documentation
+    url: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/rules/tropic-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-contract-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-supplier-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-ld/tropic-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/vocabulary/tropic-vocabulary.yml
+- aid: tropic:tropic-suppliers-api
+  name: Tropic Suppliers API
+  description: Manage supplier profiles and relationships
+  humanURL: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
+  baseURL: https://api.tropicapp.io/v1
+  tags:
+  - Suppliers
+  properties:
+  - type: OpenAPI
+    url: openapi/tropic-suppliers-api-openapi.yml
+  - type: Documentation
+    url: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/rules/tropic-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-contract-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-supplier-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-ld/tropic-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/vocabulary/tropic-vocabulary.yml
+- aid: tropic:tropic-users-api
+  name: Tropic Users API
+  description: Manage users and access
+  humanURL: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
+  baseURL: https://api.tropicapp.io/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/tropic-users-api-openapi.yml
+  - type: Documentation
+    url: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/rules/tropic-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-contract-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-supplier-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-ld/tropic-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/vocabulary/tropic-vocabulary.yml
+- aid: tropic:tropic-webhooks-api
+  name: Tropic Webhooks API
+  description: Configure and manage webhook subscriptions
+  humanURL: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
+  baseURL: https://api.tropicapp.io/v1
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/tropic-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/rules/tropic-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-contract-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-supplier-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-ld/tropic-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/vocabulary/tropic-vocabulary.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/tropic/overview
   - type: AgenticAccess
     url: agentic-access/tropic-agentic-access.yml
   - type: TrustCenter
