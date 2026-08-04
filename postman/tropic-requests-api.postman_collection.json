@@ -1,0 +1,1111 @@
+{
+  "info": {
+    "_postman_id": "dd113d50-2c3b-402f-824a-f43d1467dcd6",
+    "name": "Tropic Contracts Requests API",
+    "description": "The Tropic public API enables organizations to connect Tropic with other software in their stack, creating a connected spend and procurement ecosystem. The API supports building custom integrations for tools that do not have pre-built connectors, including contract management, supplier management, procurement requests, and webhook configuration.\n\nContact Support:\n Name: Tropic Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:05:25.000Z",
+    "updatedAt": "2026-07-28T11:05:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-dd113d50-2c3b-402f-824a-f43d1467dcd6"
+  },
+  "item": [
+    {
+      "name": "requests",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "approve",
+              "item": [
+                {
+                  "name": "Approve Request",
+                  "id": "cd1f788a-e848-4745-95af-01616d62e386",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"notes\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/requests/:id/approve",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "requests",
+                        ":id",
+                        "approve"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6ad12b44-6e25-4e41-98fe-f90f2d46f596",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Approves a pending procurement request."
+                  },
+                  "response": [
+                    {
+                      "id": "5a8971df-2a00-4e31-b598-ff46abf9add9",
+                      "name": "Request approved",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"notes\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/requests/:id/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "requests",
+                            ":id",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requester_id\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"status\": \"approved\",\n  \"amount\": \"<number>\",\n  \"currency\": \"USD\",\n  \"category\": \"<string>\",\n  \"approver_id\": \"<string>\",\n  \"approved_at\": \"<dateTime>\",\n  \"rejected_at\": \"<dateTime>\",\n  \"rejection_reason\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T11:05:25.000Z",
+                      "updatedAt": "2026-07-28T11:05:25.000Z",
+                      "uid": "35240-5a8971df-2a00-4e31-b598-ff46abf9add9"
+                    },
+                    {
+                      "id": "5c0c79aa-3a14-4400-9d45-6354ac0b58c4",
+                      "name": "Unauthorized - invalid or missing API key",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"notes\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/requests/:id/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "requests",
+                            ":id",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T11:05:25.000Z",
+                      "updatedAt": "2026-07-28T11:05:25.000Z",
+                      "uid": "35240-5c0c79aa-3a14-4400-9d45-6354ac0b58c4"
+                    },
+                    {
+                      "id": "bef39f78-f392-4424-a17c-548ea5fa9631",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"notes\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/requests/:id/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "requests",
+                            ":id",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T11:05:25.000Z",
+                      "updatedAt": "2026-07-28T11:05:25.000Z",
+                      "uid": "35240-bef39f78-f392-4424-a17c-548ea5fa9631"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T11:05:25.000Z",
+                  "updatedAt": "2026-07-28T11:05:25.000Z",
+                  "uid": "35240-cd1f788a-e848-4745-95af-01616d62e386"
+                }
+              ],
+              "id": "a6f7bbfc-c66f-43e6-89a4-56e7e2dddbd1",
+              "createdAt": "2026-07-28T11:05:25.000Z",
+              "updatedAt": "2026-07-28T11:05:25.000Z",
+              "uid": "35240-a6f7bbfc-c66f-43e6-89a4-56e7e2dddbd1"
+            },
+            {
+              "name": "reject",
+              "item": [
+                {
+                  "name": "Reject Request",
+                  "id": "862427e1-31cf-449f-8e4c-8faca5b0eae8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reason\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/requests/:id/reject",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "requests",
+                        ":id",
+                        "reject"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4291ecc9-ba3c-4611-9bc7-82d2445c35e2",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Rejects a pending procurement request."
+                  },
+                  "response": [
+                    {
+                      "id": "2c92d92f-adf3-4afc-bf91-7d37ad7030ce",
+                      "name": "Request rejected",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/requests/:id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "requests",
+                            ":id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requester_id\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"status\": \"approved\",\n  \"amount\": \"<number>\",\n  \"currency\": \"USD\",\n  \"category\": \"<string>\",\n  \"approver_id\": \"<string>\",\n  \"approved_at\": \"<dateTime>\",\n  \"rejected_at\": \"<dateTime>\",\n  \"rejection_reason\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T11:05:25.000Z",
+                      "updatedAt": "2026-07-28T11:05:25.000Z",
+                      "uid": "35240-2c92d92f-adf3-4afc-bf91-7d37ad7030ce"
+                    },
+                    {
+                      "id": "75618e08-3375-42f0-b78d-8aa4b7057aa8",
+                      "name": "Unauthorized - invalid or missing API key",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/requests/:id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "requests",
+                            ":id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T11:05:25.000Z",
+                      "updatedAt": "2026-07-28T11:05:25.000Z",
+                      "uid": "35240-75618e08-3375-42f0-b78d-8aa4b7057aa8"
+                    },
+                    {
+                      "id": "8f57fe86-1ad5-4398-b078-fbeb83c8f498",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/requests/:id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "requests",
+                            ":id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T11:05:25.000Z",
+                      "updatedAt": "2026-07-28T11:05:25.000Z",
+                      "uid": "35240-8f57fe86-1ad5-4398-b078-fbeb83c8f498"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T11:05:25.000Z",
+                  "updatedAt": "2026-07-28T11:05:25.000Z",
+                  "uid": "35240-862427e1-31cf-449f-8e4c-8faca5b0eae8"
+                }
+              ],
+              "id": "4f1c79fd-7778-4c99-a165-1b8bc4a4567e",
+              "createdAt": "2026-07-28T11:05:25.000Z",
+              "updatedAt": "2026-07-28T11:05:25.000Z",
+              "uid": "35240-4f1c79fd-7778-4c99-a165-1b8bc4a4567e"
+            },
+            {
+              "name": "Get Request",
+              "id": "74a032fe-5229-4dd9-9284-9177ba6d0c6e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/requests/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requests",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "571b2e0d-b7ca-4ef6-9c53-bac98be454f9",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns a single procurement request by ID."
+              },
+              "response": [
+                {
+                  "id": "db7aabaa-9fe7-443c-87f5-0c885f6236b7",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/requests/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "requests",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requester_id\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"status\": \"approved\",\n  \"amount\": \"<number>\",\n  \"currency\": \"USD\",\n  \"category\": \"<string>\",\n  \"approver_id\": \"<string>\",\n  \"approved_at\": \"<dateTime>\",\n  \"rejected_at\": \"<dateTime>\",\n  \"rejection_reason\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T11:05:25.000Z",
+                  "updatedAt": "2026-07-28T11:05:25.000Z",
+                  "uid": "35240-db7aabaa-9fe7-443c-87f5-0c885f6236b7"
+                },
+                {
+                  "id": "0907ee16-e193-4403-adbf-edb8d3ace3f0",
+                  "name": "Unauthorized - invalid or missing API key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/requests/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "requests",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T11:05:25.000Z",
+                  "updatedAt": "2026-07-28T11:05:25.000Z",
+                  "uid": "35240-0907ee16-e193-4403-adbf-edb8d3ace3f0"
+                },
+                {
+                  "id": "20e87dd3-7b80-424b-bd48-93e58d700c0e",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/requests/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "requests",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T11:05:25.000Z",
+                  "updatedAt": "2026-07-28T11:05:25.000Z",
+                  "uid": "35240-20e87dd3-7b80-424b-bd48-93e58d700c0e"
+                }
+              ],
+              "createdAt": "2026-07-28T11:05:25.000Z",
+              "updatedAt": "2026-07-28T11:05:25.000Z",
+              "uid": "35240-74a032fe-5229-4dd9-9284-9177ba6d0c6e"
+            }
+          ],
+          "id": "824bc888-dbce-440c-bea4-0000761b37d0",
+          "createdAt": "2026-07-28T11:05:25.000Z",
+          "updatedAt": "2026-07-28T11:05:25.000Z",
+          "uid": "35240-824bc888-dbce-440c-bea4-0000761b37d0"
+        },
+        {
+          "name": "List Requests",
+          "id": "5a819ddc-d09d-4b11-aad9-5016cb84cd95",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests?page=1&per_page=25&status=rejected",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "25"
+                },
+                {
+                  "description": "Filter by request status",
+                  "key": "status",
+                  "value": "rejected"
+                }
+              ]
+            },
+            "description": "Returns a paginated list of procurement requests."
+          },
+          "response": [
+            {
+              "id": "d5794e50-42d9-410c-89be-1f4c6b60f260",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/requests?page=1&per_page=25&status=rejected",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requests"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Filter by request status",
+                      "key": "status",
+                      "value": "rejected"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"requester_id\": \"<string>\",\n      \"supplier_id\": \"<string>\",\n      \"status\": \"pending_approval\",\n      \"amount\": \"<number>\",\n      \"currency\": \"USD\",\n      \"category\": \"<string>\",\n      \"approver_id\": \"<string>\",\n      \"approved_at\": \"<dateTime>\",\n      \"rejected_at\": \"<dateTime>\",\n      \"rejection_reason\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"requester_id\": \"<string>\",\n      \"supplier_id\": \"<string>\",\n      \"status\": \"approved\",\n      \"amount\": \"<number>\",\n      \"currency\": \"USD\",\n      \"category\": \"<string>\",\n      \"approver_id\": \"<string>\",\n      \"approved_at\": \"<dateTime>\",\n      \"rejected_at\": \"<dateTime>\",\n      \"rejection_reason\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"total\": \"<integer>\",\n    \"page\": \"<integer>\",\n    \"per_page\": \"<integer>\",\n    \"total_pages\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T11:05:25.000Z",
+              "updatedAt": "2026-07-28T11:05:25.000Z",
+              "uid": "35240-d5794e50-42d9-410c-89be-1f4c6b60f260"
+            },
+            {
+              "id": "3737b695-5a99-45b8-bbe7-12eaed01fd17",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/requests?page=1&per_page=25&status=rejected",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requests"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Filter by request status",
+                      "key": "status",
+                      "value": "rejected"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T11:05:25.000Z",
+              "updatedAt": "2026-07-28T11:05:25.000Z",
+              "uid": "35240-3737b695-5a99-45b8-bbe7-12eaed01fd17"
+            }
+          ],
+          "createdAt": "2026-07-28T11:05:25.000Z",
+          "updatedAt": "2026-07-28T11:05:25.000Z",
+          "uid": "35240-5a819ddc-d09d-4b11-aad9-5016cb84cd95"
+        },
+        {
+          "name": "Create Request",
+          "id": "a74a64e9-fe61-4eeb-840a-65fae7e8bb65",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"description\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"currency\": \"USD\",\n  \"category\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/requests",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests"
+              ]
+            },
+            "description": "Creates a new procurement request."
+          },
+          "response": [
+            {
+              "id": "e9387de1-6f08-4b7f-8ac2-8d6db7b94f06",
+              "name": "Request created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"description\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"currency\": \"USD\",\n  \"category\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/requests",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requests"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requester_id\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"status\": \"approved\",\n  \"amount\": \"<number>\",\n  \"currency\": \"USD\",\n  \"category\": \"<string>\",\n  \"approver_id\": \"<string>\",\n  \"approved_at\": \"<dateTime>\",\n  \"rejected_at\": \"<dateTime>\",\n  \"rejection_reason\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T11:05:25.000Z",
+              "updatedAt": "2026-07-28T11:05:25.000Z",
+              "uid": "35240-e9387de1-6f08-4b7f-8ac2-8d6db7b94f06"
+            },
+            {
+              "id": "da353045-9791-4521-b2de-658abf79a219",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"description\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"currency\": \"USD\",\n  \"category\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/requests",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requests"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"details\": {}\n}",
+              "createdAt": "2026-07-28T11:05:25.000Z",
+              "updatedAt": "2026-07-28T11:05:25.000Z",
+              "uid": "35240-da353045-9791-4521-b2de-658abf79a219"
+            },
+            {
+              "id": "67bce3f8-e8cf-4811-bb2c-cbb01f05c202",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"description\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"currency\": \"USD\",\n  \"category\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/requests",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requests"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T11:05:25.000Z",
+              "updatedAt": "2026-07-28T11:05:25.000Z",
+              "uid": "35240-67bce3f8-e8cf-4811-bb2c-cbb01f05c202"
+            }
+          ],
+          "createdAt": "2026-07-28T11:05:25.000Z",
+          "updatedAt": "2026-07-28T11:05:25.000Z",
+          "uid": "35240-a74a64e9-fe61-4eeb-840a-65fae7e8bb65"
+        }
+      ],
+      "id": "79f927cd-2905-417d-b98d-750ce2631546",
+      "createdAt": "2026-07-28T11:05:25.000Z",
+      "updatedAt": "2026-07-28T11:05:25.000Z",
+      "uid": "35240-79f927cd-2905-417d-b98d-750ce2631546"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tropicapp.io/v1"
+    }
+  ]
+}

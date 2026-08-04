@@ -1,0 +1,1041 @@
+{
+  "info": {
+    "_postman_id": "68cc05a9-89b5-4a5d-9c47-24c7a7b29194",
+    "name": "Tropic Contracts API",
+    "description": "The Tropic public API enables organizations to connect Tropic with other software in their stack, creating a connected spend and procurement ecosystem. The API supports building custom integrations for tools that do not have pre-built connectors, including contract management, supplier management, procurement requests, and webhook configuration.\n\nContact Support:\n Name: Tropic Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:05:24.000Z",
+    "updatedAt": "2026-07-28T11:05:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-68cc05a9-89b5-4a5d-9c47-24c7a7b29194"
+  },
+  "item": [
+    {
+      "name": "contracts",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get Contract",
+              "id": "2e754202-3511-4d42-b87b-92375489b076",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contracts/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contracts",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e9990672-0b03-4976-9ea7-5d1909c19933",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Contract ID"
+                    }
+                  ]
+                },
+                "description": "Returns a single contract by ID."
+              },
+              "response": [
+                {
+                  "id": "74333ad7-42b9-479b-b23c-3d2591109492",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"supplier_name\": \"<string>\",\n  \"status\": \"cancelled\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"renewal_date\": \"<date>\",\n  \"total_value\": \"<number>\",\n  \"currency\": \"USD\",\n  \"owner_id\": \"<string>\",\n  \"documents\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T11:05:24.000Z",
+                  "updatedAt": "2026-07-28T11:05:24.000Z",
+                  "uid": "35240-74333ad7-42b9-479b-b23c-3d2591109492"
+                },
+                {
+                  "id": "6bec44b3-4d87-40e5-a110-6ab0e27406fe",
+                  "name": "Unauthorized - invalid or missing API key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T11:05:24.000Z",
+                  "updatedAt": "2026-07-28T11:05:24.000Z",
+                  "uid": "35240-6bec44b3-4d87-40e5-a110-6ab0e27406fe"
+                },
+                {
+                  "id": "b80791e4-593e-4d5b-8ee7-6125057a1255",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T11:05:24.000Z",
+                  "updatedAt": "2026-07-28T11:05:24.000Z",
+                  "uid": "35240-b80791e4-593e-4d5b-8ee7-6125057a1255"
+                }
+              ],
+              "createdAt": "2026-07-28T11:05:24.000Z",
+              "updatedAt": "2026-07-28T11:05:24.000Z",
+              "uid": "35240-2e754202-3511-4d42-b87b-92375489b076"
+            },
+            {
+              "name": "Update Contract",
+              "id": "b1f028d2-1aff-41a5-9e1e-aa683d299576",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"pending\",\n  \"end_date\": \"<date>\",\n  \"renewal_date\": \"<date>\",\n  \"total_value\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contracts/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contracts",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "938522ab-7371-4724-a207-3666258f28e5",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Updates an existing contract."
+              },
+              "response": [
+                {
+                  "id": "2f741f78-2163-4123-9aaa-e7368346491c",
+                  "name": "Contract updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"pending\",\n  \"end_date\": \"<date>\",\n  \"renewal_date\": \"<date>\",\n  \"total_value\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"supplier_name\": \"<string>\",\n  \"status\": \"cancelled\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"renewal_date\": \"<date>\",\n  \"total_value\": \"<number>\",\n  \"currency\": \"USD\",\n  \"owner_id\": \"<string>\",\n  \"documents\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T11:05:24.000Z",
+                  "updatedAt": "2026-07-28T11:05:24.000Z",
+                  "uid": "35240-2f741f78-2163-4123-9aaa-e7368346491c"
+                },
+                {
+                  "id": "31e9fb38-e9d5-404f-8584-333268978ff2",
+                  "name": "Unauthorized - invalid or missing API key",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"pending\",\n  \"end_date\": \"<date>\",\n  \"renewal_date\": \"<date>\",\n  \"total_value\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T11:05:24.000Z",
+                  "updatedAt": "2026-07-28T11:05:24.000Z",
+                  "uid": "35240-31e9fb38-e9d5-404f-8584-333268978ff2"
+                },
+                {
+                  "id": "fd3f02c3-222c-4d6d-b8d1-78f90e392681",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"pending\",\n  \"end_date\": \"<date>\",\n  \"renewal_date\": \"<date>\",\n  \"total_value\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T11:05:24.000Z",
+                  "updatedAt": "2026-07-28T11:05:24.000Z",
+                  "uid": "35240-fd3f02c3-222c-4d6d-b8d1-78f90e392681"
+                }
+              ],
+              "createdAt": "2026-07-28T11:05:24.000Z",
+              "updatedAt": "2026-07-28T11:05:24.000Z",
+              "uid": "35240-b1f028d2-1aff-41a5-9e1e-aa683d299576"
+            },
+            {
+              "name": "Delete Contract",
+              "id": "ec25a236-605e-476e-bf7b-12b0861bdcd7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contracts/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contracts",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "9150c1be-7949-4942-8e51-3b121f5d9af4",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Deletes a contract record."
+              },
+              "response": [
+                {
+                  "id": "65b17504-74a2-4a65-9a23-ab7a27dd4dae",
+                  "name": "Contract deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T11:05:24.000Z",
+                  "updatedAt": "2026-07-28T11:05:24.000Z",
+                  "uid": "35240-65b17504-74a2-4a65-9a23-ab7a27dd4dae"
+                },
+                {
+                  "id": "aa37fa08-b710-4703-a786-f526d720cddb",
+                  "name": "Unauthorized - invalid or missing API key",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T11:05:24.000Z",
+                  "updatedAt": "2026-07-28T11:05:24.000Z",
+                  "uid": "35240-aa37fa08-b710-4703-a786-f526d720cddb"
+                },
+                {
+                  "id": "75df0f2b-0045-4efe-8b2d-c97dfeb712f6",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contracts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contracts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T11:05:24.000Z",
+                  "updatedAt": "2026-07-28T11:05:24.000Z",
+                  "uid": "35240-75df0f2b-0045-4efe-8b2d-c97dfeb712f6"
+                }
+              ],
+              "createdAt": "2026-07-28T11:05:24.000Z",
+              "updatedAt": "2026-07-28T11:05:24.000Z",
+              "uid": "35240-ec25a236-605e-476e-bf7b-12b0861bdcd7"
+            }
+          ],
+          "id": "5fb24118-6d68-47bb-943f-d39a1f186043",
+          "createdAt": "2026-07-28T11:05:24.000Z",
+          "updatedAt": "2026-07-28T11:05:24.000Z",
+          "uid": "35240-5fb24118-6d68-47bb-943f-d39a1f186043"
+        },
+        {
+          "name": "List Contracts",
+          "id": "e93ce032-0251-4763-a3a0-9cffdc9a64c9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/contracts?page=1&per_page=25&status=expired&supplier_id=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contracts"
+              ],
+              "query": [
+                {
+                  "description": "Page number for pagination",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "Number of results per page",
+                  "key": "per_page",
+                  "value": "25"
+                },
+                {
+                  "description": "Filter by contract status",
+                  "key": "status",
+                  "value": "expired"
+                },
+                {
+                  "description": "Filter by supplier ID",
+                  "key": "supplier_id",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a paginated list of all contracts in the organization."
+          },
+          "response": [
+            {
+              "id": "fe5bd298-f05d-40de-a869-ebaba38b9078",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contracts?page=1&per_page=25&status=expired&supplier_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contracts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of results per page",
+                      "key": "per_page",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Filter by contract status",
+                      "key": "status",
+                      "value": "expired"
+                    },
+                    {
+                      "description": "Filter by supplier ID",
+                      "key": "supplier_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"supplier_id\": \"<string>\",\n      \"supplier_name\": \"<string>\",\n      \"status\": \"pending\",\n      \"start_date\": \"<date>\",\n      \"end_date\": \"<date>\",\n      \"renewal_date\": \"<date>\",\n      \"total_value\": \"<number>\",\n      \"currency\": \"USD\",\n      \"owner_id\": \"<string>\",\n      \"documents\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<string>\"\n        }\n      ],\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"supplier_id\": \"<string>\",\n      \"supplier_name\": \"<string>\",\n      \"status\": \"active\",\n      \"start_date\": \"<date>\",\n      \"end_date\": \"<date>\",\n      \"renewal_date\": \"<date>\",\n      \"total_value\": \"<number>\",\n      \"currency\": \"USD\",\n      \"owner_id\": \"<string>\",\n      \"documents\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<string>\"\n        }\n      ],\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"total\": \"<integer>\",\n    \"page\": \"<integer>\",\n    \"per_page\": \"<integer>\",\n    \"total_pages\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T11:05:24.000Z",
+              "updatedAt": "2026-07-28T11:05:24.000Z",
+              "uid": "35240-fe5bd298-f05d-40de-a869-ebaba38b9078"
+            },
+            {
+              "id": "2b63eb01-6636-4ba6-9a4b-9976dfb8278e",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contracts?page=1&per_page=25&status=expired&supplier_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contracts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of results per page",
+                      "key": "per_page",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Filter by contract status",
+                      "key": "status",
+                      "value": "expired"
+                    },
+                    {
+                      "description": "Filter by supplier ID",
+                      "key": "supplier_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T11:05:24.000Z",
+              "updatedAt": "2026-07-28T11:05:24.000Z",
+              "uid": "35240-2b63eb01-6636-4ba6-9a4b-9976dfb8278e"
+            }
+          ],
+          "createdAt": "2026-07-28T11:05:24.000Z",
+          "updatedAt": "2026-07-28T11:05:24.000Z",
+          "uid": "35240-e93ce032-0251-4763-a3a0-9cffdc9a64c9"
+        },
+        {
+          "name": "Create Contract",
+          "id": "85486e9e-c404-4cb5-a512-ec8eaf582b24",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"renewal_date\": \"<date>\",\n  \"total_value\": \"<number>\",\n  \"currency\": \"USD\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contracts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contracts"
+              ]
+            },
+            "description": "Creates a new contract record."
+          },
+          "response": [
+            {
+              "id": "70fe8821-383f-473d-816b-d17bac35d314",
+              "name": "Contract created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"renewal_date\": \"<date>\",\n  \"total_value\": \"<number>\",\n  \"currency\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contracts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contracts"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"supplier_name\": \"<string>\",\n  \"status\": \"cancelled\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"renewal_date\": \"<date>\",\n  \"total_value\": \"<number>\",\n  \"currency\": \"USD\",\n  \"owner_id\": \"<string>\",\n  \"documents\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T11:05:24.000Z",
+              "updatedAt": "2026-07-28T11:05:24.000Z",
+              "uid": "35240-70fe8821-383f-473d-816b-d17bac35d314"
+            },
+            {
+              "id": "b8d2749c-bdb5-445a-b24d-24fcf3b6a067",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"renewal_date\": \"<date>\",\n  \"total_value\": \"<number>\",\n  \"currency\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contracts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contracts"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"details\": {}\n}",
+              "createdAt": "2026-07-28T11:05:24.000Z",
+              "updatedAt": "2026-07-28T11:05:24.000Z",
+              "uid": "35240-b8d2749c-bdb5-445a-b24d-24fcf3b6a067"
+            },
+            {
+              "id": "ec885ef1-e8e6-403f-b199-114d82567b86",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"supplier_id\": \"<string>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"renewal_date\": \"<date>\",\n  \"total_value\": \"<number>\",\n  \"currency\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contracts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contracts"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T11:05:24.000Z",
+              "updatedAt": "2026-07-28T11:05:24.000Z",
+              "uid": "35240-ec885ef1-e8e6-403f-b199-114d82567b86"
+            }
+          ],
+          "createdAt": "2026-07-28T11:05:24.000Z",
+          "updatedAt": "2026-07-28T11:05:24.000Z",
+          "uid": "35240-85486e9e-c404-4cb5-a512-ec8eaf582b24"
+        }
+      ],
+      "id": "fd0578a8-9491-43ed-a0da-60a847fb75f3",
+      "createdAt": "2026-07-28T11:05:24.000Z",
+      "updatedAt": "2026-07-28T11:05:24.000Z",
+      "uid": "35240-fd0578a8-9491-43ed-a0da-60a847fb75f3"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tropicapp.io/v1"
+    }
+  ]
+}

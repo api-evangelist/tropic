@@ -1,0 +1,377 @@
+{
+  "info": {
+    "_postman_id": "8c569389-0fb8-4d5e-bcfa-0ad2671e1f1f",
+    "name": "Tropic Contracts Users API",
+    "description": "The Tropic public API enables organizations to connect Tropic with other software in their stack, creating a connected spend and procurement ecosystem. The API supports building custom integrations for tools that do not have pre-built connectors, including contract management, supplier management, procurement requests, and webhook configuration.\n\nContact Support:\n Name: Tropic Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:05:28.000Z",
+    "updatedAt": "2026-07-28T11:05:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8c569389-0fb8-4d5e-bcfa-0ad2671e1f1f"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get User",
+              "id": "0cf88966-26ce-4cda-b96b-60c1a5afdd05",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "384b027d-58c8-4755-8854-4e8050486197",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns a single user by ID."
+              },
+              "response": [
+                {
+                  "id": "0067b983-4a63-433f-96b6-7e5fe868540e",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"role\": \"viewer\",\n  \"active\": \"<boolean>\",\n  \"created_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T11:05:29.000Z",
+                  "updatedAt": "2026-07-28T11:05:29.000Z",
+                  "uid": "35240-0067b983-4a63-433f-96b6-7e5fe868540e"
+                },
+                {
+                  "id": "dd783bb1-4b9d-4de4-be64-ffbb6ca94395",
+                  "name": "Unauthorized - invalid or missing API key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T11:05:29.000Z",
+                  "updatedAt": "2026-07-28T11:05:29.000Z",
+                  "uid": "35240-dd783bb1-4b9d-4de4-be64-ffbb6ca94395"
+                },
+                {
+                  "id": "e014d0f8-e53e-4519-b8b1-1c438ab41317",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T11:05:29.000Z",
+                  "updatedAt": "2026-07-28T11:05:29.000Z",
+                  "uid": "35240-e014d0f8-e53e-4519-b8b1-1c438ab41317"
+                }
+              ],
+              "createdAt": "2026-07-28T11:05:29.000Z",
+              "updatedAt": "2026-07-28T11:05:29.000Z",
+              "uid": "35240-0cf88966-26ce-4cda-b96b-60c1a5afdd05"
+            }
+          ],
+          "id": "27ab9096-ca75-4eba-b42c-a5689c3dd4d1",
+          "createdAt": "2026-07-28T11:05:29.000Z",
+          "updatedAt": "2026-07-28T11:05:29.000Z",
+          "uid": "35240-27ab9096-ca75-4eba-b42c-a5689c3dd4d1"
+        },
+        {
+          "name": "List Users",
+          "id": "39860c8e-4269-42b4-92ff-c10e28d3f37f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users?page=1&per_page=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Returns a list of users in the organization."
+          },
+          "response": [
+            {
+              "id": "daf77d61-5fdb-4dd8-be9f-f01b22ff71ca",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?page=1&per_page=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"role\": \"manager\",\n      \"active\": \"<boolean>\",\n      \"created_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"role\": \"manager\",\n      \"active\": \"<boolean>\",\n      \"created_at\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"total\": \"<integer>\",\n    \"page\": \"<integer>\",\n    \"per_page\": \"<integer>\",\n    \"total_pages\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T11:05:29.000Z",
+              "updatedAt": "2026-07-28T11:05:29.000Z",
+              "uid": "35240-daf77d61-5fdb-4dd8-be9f-f01b22ff71ca"
+            },
+            {
+              "id": "f2b853e6-d1ae-48fa-ac77-c65444db94e2",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?page=1&per_page=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T11:05:29.000Z",
+              "updatedAt": "2026-07-28T11:05:29.000Z",
+              "uid": "35240-f2b853e6-d1ae-48fa-ac77-c65444db94e2"
+            }
+          ],
+          "createdAt": "2026-07-28T11:05:29.000Z",
+          "updatedAt": "2026-07-28T11:05:29.000Z",
+          "uid": "35240-39860c8e-4269-42b4-92ff-c10e28d3f37f"
+        }
+      ],
+      "id": "94d731ca-c5ad-4614-84e9-dbb66a445a11",
+      "createdAt": "2026-07-28T11:05:29.000Z",
+      "updatedAt": "2026-07-28T11:05:29.000Z",
+      "uid": "35240-94d731ca-c5ad-4614-84e9-dbb66a445a11"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tropicapp.io/v1"
+    }
+  ]
+}

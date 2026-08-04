@@ -1,0 +1,22 @@
+{
+  "provider": "tropic",
+  "sources": [
+    "tropic-contracts-api-openapi.yml",
+    "tropic-requests-api-openapi.yml",
+    "tropic-suppliers-api-openapi.yml",
+    "tropic-users-api-openapi.yml",
+    "tropic-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "tropic-contracts-api-openapi.yml",
+    "tropic-requests-api-openapi.yml",
+    "tropic-suppliers-api-openapi.yml",
+    "tropic-users-api-openapi.yml",
+    "tropic-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

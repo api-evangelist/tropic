@@ -1,0 +1,845 @@
+{
+  "info": {
+    "_postman_id": "0b411a9c-d04e-44f0-9c1e-b561409abded",
+    "name": "Tropic Contracts Suppliers API",
+    "description": "The Tropic public API enables organizations to connect Tropic with other software in their stack, creating a connected spend and procurement ecosystem. The API supports building custom integrations for tools that do not have pre-built connectors, including contract management, supplier management, procurement requests, and webhook configuration.\n\nContact Support:\n Name: Tropic Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:05:27.000Z",
+    "updatedAt": "2026-07-28T11:05:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0b411a9c-d04e-44f0-9c1e-b561409abded"
+  },
+  "item": [
+    {
+      "name": "suppliers",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get Supplier",
+              "id": "112e2ecb-ad8c-4a5b-b9fc-e0ec64934054",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d98be393-f7a2-403d-bd3e-2c2594caed1f",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns a single supplier by ID."
+              },
+              "response": [
+                {
+                  "id": "30a5755c-793c-4ad4-840e-7656e38e3d2d",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"category\": \"<string>\",\n  \"status\": \"active\",\n  \"contacts\": [\n    {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"spend\": \"<number>\",\n  \"risk_rating\": \"low\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T11:05:28.000Z",
+                  "updatedAt": "2026-07-28T11:05:28.000Z",
+                  "uid": "35240-30a5755c-793c-4ad4-840e-7656e38e3d2d"
+                },
+                {
+                  "id": "48304d8e-bac0-469d-aa17-29e4e01bde12",
+                  "name": "Unauthorized - invalid or missing API key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T11:05:28.000Z",
+                  "updatedAt": "2026-07-28T11:05:28.000Z",
+                  "uid": "35240-48304d8e-bac0-469d-aa17-29e4e01bde12"
+                },
+                {
+                  "id": "cdad321b-c504-4aae-9bdc-f4c9c9997b5f",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T11:05:28.000Z",
+                  "updatedAt": "2026-07-28T11:05:28.000Z",
+                  "uid": "35240-cdad321b-c504-4aae-9bdc-f4c9c9997b5f"
+                }
+              ],
+              "createdAt": "2026-07-28T11:05:28.000Z",
+              "updatedAt": "2026-07-28T11:05:28.000Z",
+              "uid": "35240-112e2ecb-ad8c-4a5b-b9fc-e0ec64934054"
+            },
+            {
+              "name": "Update Supplier",
+              "id": "1191ba8e-93d2-4e63-b1a6-0c5734c3afff",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"category\": \"<string>\",\n  \"status\": \"inactive\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "de7eb8d3-08b4-4d6b-939c-a48c83bf096f",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Updates an existing supplier profile."
+              },
+              "response": [
+                {
+                  "id": "bfe32042-ac85-49a5-84d8-01febf05c4b4",
+                  "name": "Supplier updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"category\": \"<string>\",\n  \"status\": \"inactive\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"category\": \"<string>\",\n  \"status\": \"active\",\n  \"contacts\": [\n    {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"spend\": \"<number>\",\n  \"risk_rating\": \"low\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T11:05:28.000Z",
+                  "updatedAt": "2026-07-28T11:05:28.000Z",
+                  "uid": "35240-bfe32042-ac85-49a5-84d8-01febf05c4b4"
+                },
+                {
+                  "id": "a007e92a-ee7d-4f6b-8d3f-ced99b48be94",
+                  "name": "Unauthorized - invalid or missing API key",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"category\": \"<string>\",\n  \"status\": \"inactive\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T11:05:28.000Z",
+                  "updatedAt": "2026-07-28T11:05:28.000Z",
+                  "uid": "35240-a007e92a-ee7d-4f6b-8d3f-ced99b48be94"
+                },
+                {
+                  "id": "4811aabf-095c-4727-8e24-d79f2441c418",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"category\": \"<string>\",\n  \"status\": \"inactive\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T11:05:28.000Z",
+                  "updatedAt": "2026-07-28T11:05:28.000Z",
+                  "uid": "35240-4811aabf-095c-4727-8e24-d79f2441c418"
+                }
+              ],
+              "createdAt": "2026-07-28T11:05:28.000Z",
+              "updatedAt": "2026-07-28T11:05:28.000Z",
+              "uid": "35240-1191ba8e-93d2-4e63-b1a6-0c5734c3afff"
+            }
+          ],
+          "id": "9c1aba8c-d054-4597-ad4c-2374b234f492",
+          "createdAt": "2026-07-28T11:05:28.000Z",
+          "updatedAt": "2026-07-28T11:05:28.000Z",
+          "uid": "35240-9c1aba8c-d054-4597-ad4c-2374b234f492"
+        },
+        {
+          "name": "List Suppliers",
+          "id": "7c6d2fd6-c5ca-4426-8eb8-a35dd7b093c0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/suppliers?page=1&per_page=25&q=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "suppliers"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "25"
+                },
+                {
+                  "description": "Search query to filter suppliers by name",
+                  "key": "q",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a paginated list of all suppliers."
+          },
+          "response": [
+            {
+              "id": "57d5b990-2c34-4aa2-a49c-29b78cbd18da",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers?page=1&per_page=25&q=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Search query to filter suppliers by name",
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"website\": \"<uri>\",\n      \"category\": \"<string>\",\n      \"status\": \"active\",\n      \"contacts\": [\n        {\n          \"name\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"<string>\"\n        }\n      ],\n      \"spend\": \"<number>\",\n      \"risk_rating\": \"medium\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"website\": \"<uri>\",\n      \"category\": \"<string>\",\n      \"status\": \"inactive\",\n      \"contacts\": [\n        {\n          \"name\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"<string>\"\n        }\n      ],\n      \"spend\": \"<number>\",\n      \"risk_rating\": \"high\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"total\": \"<integer>\",\n    \"page\": \"<integer>\",\n    \"per_page\": \"<integer>\",\n    \"total_pages\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T11:05:28.000Z",
+              "updatedAt": "2026-07-28T11:05:28.000Z",
+              "uid": "35240-57d5b990-2c34-4aa2-a49c-29b78cbd18da"
+            },
+            {
+              "id": "2f67f1e9-4fc2-4631-a8ca-f27d0f59d26e",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers?page=1&per_page=25&q=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Search query to filter suppliers by name",
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T11:05:28.000Z",
+              "updatedAt": "2026-07-28T11:05:28.000Z",
+              "uid": "35240-2f67f1e9-4fc2-4631-a8ca-f27d0f59d26e"
+            }
+          ],
+          "createdAt": "2026-07-28T11:05:28.000Z",
+          "updatedAt": "2026-07-28T11:05:28.000Z",
+          "uid": "35240-7c6d2fd6-c5ca-4426-8eb8-a35dd7b093c0"
+        },
+        {
+          "name": "Create Supplier",
+          "id": "0352c9c7-e582-4204-868b-cfe1361d5d55",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"category\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/suppliers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "suppliers"
+              ]
+            },
+            "description": "Creates a new supplier profile."
+          },
+          "response": [
+            {
+              "id": "bd7c326c-6022-4584-81ef-dab073f62bf4",
+              "name": "Supplier created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"category\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"category\": \"<string>\",\n  \"status\": \"active\",\n  \"contacts\": [\n    {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"spend\": \"<number>\",\n  \"risk_rating\": \"low\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T11:05:28.000Z",
+              "updatedAt": "2026-07-28T11:05:28.000Z",
+              "uid": "35240-bd7c326c-6022-4584-81ef-dab073f62bf4"
+            },
+            {
+              "id": "4d24015f-26ac-4afc-bbf1-22658b734a8f",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"category\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"details\": {}\n}",
+              "createdAt": "2026-07-28T11:05:28.000Z",
+              "updatedAt": "2026-07-28T11:05:28.000Z",
+              "uid": "35240-4d24015f-26ac-4afc-bbf1-22658b734a8f"
+            },
+            {
+              "id": "4cdb1ec7-8145-4e35-9fd5-9e6c93d4fcc4",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"category\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T11:05:28.000Z",
+              "updatedAt": "2026-07-28T11:05:28.000Z",
+              "uid": "35240-4cdb1ec7-8145-4e35-9fd5-9e6c93d4fcc4"
+            }
+          ],
+          "createdAt": "2026-07-28T11:05:28.000Z",
+          "updatedAt": "2026-07-28T11:05:28.000Z",
+          "uid": "35240-0352c9c7-e582-4204-868b-cfe1361d5d55"
+        }
+      ],
+      "id": "36301d75-bc49-4124-82a6-3b9ada9f5970",
+      "createdAt": "2026-07-28T11:05:28.000Z",
+      "updatedAt": "2026-07-28T11:05:28.000Z",
+      "uid": "35240-36301d75-bc49-4124-82a6-3b9ada9f5970"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tropicapp.io/v1"
+    }
+  ]
+}
