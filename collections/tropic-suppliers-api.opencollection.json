@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tropic Contracts Suppliers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Suppliers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Suppliers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tropicapp.io/v1/suppliers",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query to filter suppliers by name"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all suppliers."
+        },
+        {
+          "info": {
+            "name": "Create Supplier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tropicapp.io/v1/suppliers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new supplier profile."
+        },
+        {
+          "info": {
+            "name": "Get Supplier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tropicapp.io/v1/suppliers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a single supplier by ID."
+        },
+        {
+          "info": {
+            "name": "Update Supplier",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tropicapp.io/v1/suppliers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing supplier profile."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

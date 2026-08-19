@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tropic Contracts Requests API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tropicapp.io/v1/requests",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by request status"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of procurement requests."
+        },
+        {
+          "info": {
+            "name": "Create Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tropicapp.io/v1/requests",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new procurement request."
+        },
+        {
+          "info": {
+            "name": "Get Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tropicapp.io/v1/requests/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a single procurement request by ID."
+        },
+        {
+          "info": {
+            "name": "Approve Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tropicapp.io/v1/requests/:id/approve",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approves a pending procurement request."
+        },
+        {
+          "info": {
+            "name": "Reject Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tropicapp.io/v1/requests/:id/reject",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rejects a pending procurement request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
