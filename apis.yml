@@ -122,6 +122,8 @@ apis:
   humanURL: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
   baseURL: https://api.tropicapp.io/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -149,6 +151,8 @@ apis:
   humanURL: https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks
   baseURL: https://api.tropicapp.io/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
