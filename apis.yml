@@ -187,6 +187,9 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/vocabulary/tropic-vocabulary.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/tropic-capability-edges.yml
+    name: Tropic Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/tropic/overview
   - type: AgenticAccess

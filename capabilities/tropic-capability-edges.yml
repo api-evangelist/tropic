@@ -1,0 +1,43 @@
+slug: tropic
+provider: Tropic
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Contracts
+  spec_file: tropic-contracts-api-openapi.yml
+  capability_id: BC-500.20
+  capability_id_l1: BC-500
+  capability_name: Procurement Contract Management
+  confidence: 0.85
+  evidence: '''Create Contract'', ''Update Contract'' on a platform supporting ''contract management,
+    supplier management, procurement requests'''
+  reason: Contract lifecycle objects within an intelligent procurement platform map to procurement contract
+    management.
+- tag: Requests
+  spec_file: tropic-requests-api-openapi.yml
+  capability_id: BC-500.40
+  capability_id_l1: BC-500
+  capability_name: Procure-to-Pay Operations Management
+  confidence: 0.75
+  evidence: schema 'ProcurementRequestCreate'; 'Approve Request', 'Reject Request'
+  reason: Procurement request intake with approve/reject workflow is requisition handling within procure-to-pay
+    operations.
+- tag: Suppliers
+  spec_file: tropic-suppliers-api-openapi.yml
+  capability_id: BC-510
+  capability_id_l1: BC-510
+  capability_name: Supplier Management
+  confidence: 0.75
+  evidence: '''Create Supplier'', ''Update Supplier''; description mentions ''supplier management'''
+  reason: Supplier record lifecycle on a procurement platform maps to supplier management; CRUD alone
+    does not pin a sub-capability.
