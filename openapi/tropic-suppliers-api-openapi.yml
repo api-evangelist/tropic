@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Tropic Contracts Suppliers API
+  title: Tropic Suppliers API
   description: The Tropic public API enables organizations to connect Tropic with other software in their stack, creating a connected spend and procurement ecosystem. The API supports building custom integrations for tools that do not have pre-built connectors, including contract management, supplier management, procurement requests, and webhook configuration.
   version: 1.0.0
   contact:
@@ -133,6 +133,33 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    SupplierUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        website:
+          type: string
+          format: uri
+        category:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          - prospect
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+        page:
+          type: integer
+        per_page:
+          type: integer
+        total_pages:
+          type: integer
     Supplier:
       type: object
       properties:
@@ -181,33 +208,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    SupplierUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-        website:
-          type: string
-          format: uri
-        category:
-          type: string
-        status:
-          type: string
-          enum:
-          - active
-          - inactive
-          - prospect
-    PaginationMeta:
-      type: object
-      properties:
-        total:
-          type: integer
-        page:
-          type: integer
-        per_page:
-          type: integer
-        total_pages:
-          type: integer
     SupplierCreate:
       type: object
       required:
@@ -232,8 +232,8 @@ components:
                 type: string
               details:
                 type: object
-    Unauthorized:
-      description: Unauthorized - invalid or missing API key
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -241,8 +241,8 @@ components:
             properties:
               error:
                 type: string
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Unauthorized - invalid or missing API key
       content:
         application/json:
           schema:

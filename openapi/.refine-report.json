@@ -1,11 +1,7 @@
 {
   "provider": "tropic",
   "sources": [
-    "tropic-contracts-api-openapi.yml",
-    "tropic-requests-api-openapi.yml",
-    "tropic-suppliers-api-openapi.yml",
-    "tropic-users-api-openapi.yml",
-    "tropic-webhooks-api-openapi.yml"
+    "_original/tropic-openapi.yml"
   ],
   "outputs": [
     "tropic-contracts-api-openapi.yml",
@@ -17,6 +13,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "tropic-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "tropic-contracts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tropic-requests-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tropic-suppliers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tropic-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tropic-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

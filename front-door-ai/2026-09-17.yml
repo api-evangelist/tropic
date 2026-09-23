@@ -1,0 +1,27 @@
+# Front Door AI Index — tropic — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: tropic
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.tropicapp.io
+  final_host: www.tropicapp.io
+  ownership: own
+  owner: tropic
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 21
+  host_score: 21
+  density: 9.49
+  words: 2213
+  tiers:
+    agentic: 2
+    core: 19
+    model: 0
+  ambiguous: 17
+  top_terms:
+    AI: 19
+    intelligence: 17
+    agentic: 2

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Tropic Contracts Webhooks API
+  title: Tropic Webhooks API
   description: The Tropic public API enables organizations to connect Tropic with other software in their stack, creating a connected spend and procurement ecosystem. The API supports building custom integrations for tools that do not have pre-built connectors, including contract management, supplier management, procurement requests, and webhook configuration.
   version: 1.0.0
   contact:
@@ -93,8 +93,8 @@ components:
                 type: string
               details:
                 type: object
-    Unauthorized:
-      description: Unauthorized - invalid or missing API key
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -102,8 +102,8 @@ components:
             properties:
               error:
                 type: string
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Unauthorized - invalid or missing API key
       content:
         application/json:
           schema:
