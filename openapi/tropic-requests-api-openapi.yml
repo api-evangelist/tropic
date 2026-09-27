@@ -176,6 +176,15 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
     BadRequest:
       description: Bad request - invalid parameters
       content:
@@ -187,15 +196,6 @@ components:
                 type: string
               details:
                 type: object
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
     Unauthorized:
       description: Unauthorized - invalid or missing API key
       content:
@@ -217,25 +217,6 @@ components:
           type: integer
         total_pages:
           type: integer
-    ProcurementRequestCreate:
-      type: object
-      required:
-      - title
-      - amount
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        supplier_id:
-          type: string
-        amount:
-          type: number
-        currency:
-          type: string
-          default: USD
-        category:
-          type: string
     ProcurementRequest:
       type: object
       properties:
@@ -285,6 +266,25 @@ components:
         updated_at:
           type: string
           format: date-time
+    ProcurementRequestCreate:
+      type: object
+      required:
+      - title
+      - amount
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        supplier_id:
+          type: string
+        amount:
+          type: number
+        currency:
+          type: string
+          default: USD
+        category:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http

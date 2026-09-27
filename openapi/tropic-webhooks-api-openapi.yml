@@ -82,6 +82,15 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
     BadRequest:
       description: Bad request - invalid parameters
       content:
@@ -93,15 +102,6 @@ components:
                 type: string
               details:
                 type: object
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
     Unauthorized:
       description: Unauthorized - invalid or missing API key
       content:
@@ -112,6 +112,19 @@ components:
               error:
                 type: string
   schemas:
+    WebhookCreate:
+      type: object
+      required:
+      - url
+      - events
+      properties:
+        url:
+          type: string
+          format: uri
+        events:
+          type: array
+          items:
+            type: string
     Webhook:
       type: object
       properties:
@@ -144,19 +157,6 @@ components:
         created_at:
           type: string
           format: date-time
-    WebhookCreate:
-      type: object
-      required:
-      - url
-      - events
-      properties:
-        url:
-          type: string
-          format: uri
-        events:
-          type: array
-          items:
-            type: string
   securitySchemes:
     BearerAuth:
       type: http

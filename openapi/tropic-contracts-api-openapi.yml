@@ -166,6 +166,15 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
     BadRequest:
       description: Bad request - invalid parameters
       content:
@@ -177,15 +186,6 @@ components:
                 type: string
               details:
                 type: object
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
     Unauthorized:
       description: Unauthorized - invalid or missing API key
       content:
@@ -196,37 +196,6 @@ components:
               error:
                 type: string
   schemas:
-    PaginationMeta:
-      type: object
-      properties:
-        total:
-          type: integer
-        page:
-          type: integer
-        per_page:
-          type: integer
-        total_pages:
-          type: integer
-    ContractUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-        status:
-          type: string
-          enum:
-          - active
-          - expired
-          - pending
-          - cancelled
-        end_date:
-          type: string
-          format: date
-        renewal_date:
-          type: string
-          format: date
-        total_value:
-          type: number
     Contract:
       type: object
       properties:
@@ -287,6 +256,37 @@ components:
         updated_at:
           type: string
           format: date-time
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+        page:
+          type: integer
+        per_page:
+          type: integer
+        total_pages:
+          type: integer
+    ContractUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - expired
+          - pending
+          - cancelled
+        end_date:
+          type: string
+          format: date
+        renewal_date:
+          type: string
+          format: date
+        total_value:
+          type: number
     ContractCreate:
       type: object
       required:
