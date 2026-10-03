@@ -132,36 +132,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-    BadRequest:
-      description: Bad request - invalid parameters
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-              details:
-                type: object
-    Unauthorized:
-      description: Unauthorized - invalid or missing API key
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
   schemas:
     PaginationMeta:
       type: object
@@ -174,22 +144,6 @@ components:
           type: integer
         total_pages:
           type: integer
-    SupplierUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-        website:
-          type: string
-          format: uri
-        category:
-          type: string
-        status:
-          type: string
-          enum:
-          - active
-          - inactive
-          - prospect
     Supplier:
       type: object
       properties:
@@ -238,6 +192,22 @@ components:
         updated_at:
           type: string
           format: date-time
+    SupplierUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        website:
+          type: string
+          format: uri
+        category:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          - prospect
     SupplierCreate:
       type: object
       required:
@@ -250,6 +220,36 @@ components:
           format: uri
         category:
           type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or missing API key
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              details:
+                type: object
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
   securitySchemes:
     BearerAuth:
       type: http
