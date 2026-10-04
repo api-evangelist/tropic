@@ -128,8 +128,8 @@ components:
           type: string
           format: date-time
   responses:
-    Unauthorized:
-      description: Unauthorized - invalid or missing API key
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -148,8 +148,8 @@ components:
                 type: string
               details:
                 type: object
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Unauthorized - invalid or missing API key
       content:
         application/json:
           schema:

@@ -166,26 +166,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    ContractUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-        status:
-          type: string
-          enum:
-          - active
-          - expired
-          - pending
-          - cancelled
-        end_date:
-          type: string
-          format: date
-        renewal_date:
-          type: string
-          format: date
-        total_value:
-          type: number
     PaginationMeta:
       type: object
       properties:
@@ -197,31 +177,6 @@ components:
           type: integer
         total_pages:
           type: integer
-    ContractCreate:
-      type: object
-      required:
-      - name
-      - supplier_id
-      - start_date
-      properties:
-        name:
-          type: string
-        supplier_id:
-          type: string
-        start_date:
-          type: string
-          format: date
-        end_date:
-          type: string
-          format: date
-        renewal_date:
-          type: string
-          format: date
-        total_value:
-          type: number
-        currency:
-          type: string
-          default: USD
     Contract:
       type: object
       properties:
@@ -282,9 +237,54 @@ components:
         updated_at:
           type: string
           format: date-time
+    ContractUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - expired
+          - pending
+          - cancelled
+        end_date:
+          type: string
+          format: date
+        renewal_date:
+          type: string
+          format: date
+        total_value:
+          type: number
+    ContractCreate:
+      type: object
+      required:
+      - name
+      - supplier_id
+      - start_date
+      properties:
+        name:
+          type: string
+        supplier_id:
+          type: string
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        renewal_date:
+          type: string
+          format: date
+        total_value:
+          type: number
+        currency:
+          type: string
+          default: USD
   responses:
-    Unauthorized:
-      description: Unauthorized - invalid or missing API key
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -303,8 +303,8 @@ components:
                 type: string
               details:
                 type: object
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Unauthorized - invalid or missing API key
       content:
         application/json:
           schema:
