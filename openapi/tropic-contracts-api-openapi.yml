@@ -166,17 +166,51 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    PaginationMeta:
+    ContractUpdate:
       type: object
       properties:
-        total:
-          type: integer
-        page:
-          type: integer
-        per_page:
-          type: integer
-        total_pages:
-          type: integer
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - expired
+          - pending
+          - cancelled
+        end_date:
+          type: string
+          format: date
+        renewal_date:
+          type: string
+          format: date
+        total_value:
+          type: number
+    ContractCreate:
+      type: object
+      required:
+      - name
+      - supplier_id
+      - start_date
+      properties:
+        name:
+          type: string
+        supplier_id:
+          type: string
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        renewal_date:
+          type: string
+          format: date
+        total_value:
+          type: number
+        currency:
+          type: string
+          default: USD
     Contract:
       type: object
       properties:
@@ -237,61 +271,18 @@ components:
         updated_at:
           type: string
           format: date-time
-    ContractUpdate:
+    PaginationMeta:
       type: object
       properties:
-        name:
-          type: string
-        status:
-          type: string
-          enum:
-          - active
-          - expired
-          - pending
-          - cancelled
-        end_date:
-          type: string
-          format: date
-        renewal_date:
-          type: string
-          format: date
-        total_value:
-          type: number
-    ContractCreate:
-      type: object
-      required:
-      - name
-      - supplier_id
-      - start_date
-      properties:
-        name:
-          type: string
-        supplier_id:
-          type: string
-        start_date:
-          type: string
-          format: date
-        end_date:
-          type: string
-          format: date
-        renewal_date:
-          type: string
-          format: date
-        total_value:
-          type: number
-        currency:
-          type: string
-          default: USD
+        total:
+          type: integer
+        page:
+          type: integer
+        per_page:
+          type: integer
+        total_pages:
+          type: integer
   responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
     BadRequest:
       description: Bad request - invalid parameters
       content:
@@ -305,6 +296,15 @@ components:
                 type: object
     Unauthorized:
       description: Unauthorized - invalid or missing API key
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
