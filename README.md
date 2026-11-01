@@ -1,4 +1,4 @@
-# Tropic (tropic)
+# Tropic
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,71 +66,170 @@
 
 Tropic is an intelligent procurement platform that combines AI-powered spend management, supplier management, and benchmark data to help organizations find and capture savings opportunities. Tropic's AI agents track renewals, spot shadow spend, flag compliance issues, and automate manual procurement tasks with SKU-level price benchmarks from thousands of actual deals.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/apis.yml)
+**Areas:** Benchmarking · Contract Management · Cost Optimization · Procurement · Renewals · SaaS Management · SaaS Procurement · Spend Management · Supplier Management
 
-## Scope
+## Tropic on APIs.io
 
-- **Type:** Index
+Everything profiled for Tropic is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/tropic/](https://apis.io/providers/tropic/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Benchmarking
-- Contract Management
-- Cost Optimization
-- Procurement
-- Renewals
-- SaaS Management
-- SaaS Procurement
-- Spend Management
-- Supplier Management
+- [Tropic Contracts API](https://apis.io/apis/tropic/tropic-contracts-api/) — Manage vendor contracts and contract lifecycle
+- [Tropic Requests API](https://apis.io/apis/tropic/tropic-requests-api/) — Manage procurement requests and approvals
+- [Tropic Suppliers API](https://apis.io/apis/tropic/tropic-suppliers-api/) — Manage supplier profiles and relationships
+- [Tropic Users API](https://apis.io/apis/tropic/tropic-users-api/) — Manage users and access
+- [Tropic Webhooks API](https://apis.io/apis/tropic/tropic-webhooks-api/) — Configure and manage webhook subscriptions
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Tropic API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Tropic public REST API enables organizations to connect Tropic with other software in their stack. It supports managing contracts, suppliers, procurement requests, webhook subscriptions, and users programmatically. Authentication uses API keys via Bearer tokens issued from the Tropic settings panel.
+- [Tropic Agentic Access](https://apis.io/agentic-access/tropic/tropic-agentic-access/)
 
-- **Human URL:** [https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks](https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks)
-- **Base URL:** `https://api.tropicapp.io/v1`
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- Contract Management
-- Integrations
-- Procurement
-- Spend Management
-- Supplier Management
-- Webhooks
+- [Contract](https://apis.io/schemas/tropic/tropic-contract/)
+- [Supplier](https://apis.io/schemas/tropic/tropic-supplier/)
 
-#### Properties
+#### JSON Structure (2)
 
-- [Documentation](https://help.tropicapp.io/hc/en-us/sections/31190632406171-API-and-Webhooks)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/openapi/tropic-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/rules/tropic-rules.yml)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-contract-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-schema/tropic-supplier-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [J S O N L D Context](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/json-ld/tropic-context.jsonld)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/tropic/refs/heads/main/vocabulary/tropic-vocabulary.yml)
-- [Postman Collection](collections/tropic.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tropic.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Tropic Contract Structure](https://apis.io/json-structure/tropic/tropic-contract-structure/)
+- [Tropic Supplier Structure](https://apis.io/json-structure/tropic/tropic-supplier-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Tropic Context](https://apis.io/jsonld/tropic/tropic-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Tropic Vocabulary](https://apis.io/vocabularies/tropic/tropic-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Tropic Create Request Example](https://apis.io/examples/tropic/tropic-create-request-example/)
+- [Tropic List Contracts Example](https://apis.io/examples/tropic/tropic-list-contracts-example/)
+
+#### Collections (11)
+
+Postman and Open Collection request collections.
+
+- [Tropic API](https://apis.io/collections/tropic/open-tropic/)
+- [Tropic Contracts API](https://apis.io/collections/tropic/open-tropic-contracts-api/)
+- [Tropic Contracts Requests API](https://apis.io/collections/tropic/open-tropic-requests-api/)
+- [Tropic Contracts Suppliers API](https://apis.io/collections/tropic/open-tropic-suppliers-api/)
+- [Tropic Contracts Users API](https://apis.io/collections/tropic/open-tropic-users-api/)
+- [Tropic Contracts Webhooks API](https://apis.io/collections/tropic/open-tropic-webhooks-api/)
+- [Tropic Contracts API](https://apis.io/collections/tropic/postman-tropic-contracts-api/)
+- [Tropic Contracts Requests API](https://apis.io/collections/tropic/postman-tropic-requests-api/)
+- [Tropic Contracts Suppliers API](https://apis.io/collections/tropic/postman-tropic-suppliers-api/)
+- [Tropic Contracts Users API](https://apis.io/collections/tropic/postman-tropic-users-api/)
+- [Tropic Contracts Webhooks API](https://apis.io/collections/tropic/postman-tropic-webhooks-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Tropic — jsonschema rules](https://apis.io/rules/tropic/tropic-jsonschema-spectral-rules/)
+- [Tropic API Rules](https://apis.io/rules/tropic/tropic-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Tropic Authentication](https://apis.io/security/tropic/tropic-authentication/)
+- [Tropic Domain Security](https://apis.io/security/tropic/tropic-domain-security/)
+- [Tropic Trust Center](https://apis.io/security/tropic/tropic-trust-center/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Tropic Plans Pricing](https://apis.io/plans/tropic/tropic-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Tropic Rate Limits](https://apis.io/rate-limits/tropic/tropic-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Tropic Finops](https://apis.io/finops/tropic/tropic-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.tropicapp.io/)
 - [Documentation](https://help.tropicapp.io/hc/en-us)
-- [Blog](https://www.tropicapp.io/blog)
-- [Login](https://app.tropicapp.io/portal/login)
-- [Integrations](https://www.tropicapp.io/solutions/integrations)
 - [Pricing](https://www.tropicapp.io/pricing)
-- [LinkedIn](https://www.linkedin.com/company/tropicapp)
-- [Twitter](https://x.com/tropicapp)
+- [Blog](https://www.tropicapp.io/blog)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 38.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 64.3 |
+| Contract governance | 27.3 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 25.0 |
+| Access clarity | 32.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 21.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/tropic/](https://apis.io/providers/tropic/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Tropic: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/tropic/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
